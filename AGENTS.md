@@ -18,6 +18,9 @@ Local checkouts, all siblings of this directory under
 | Brand pack | `../logos/p2poolv2-brand-pack` | -- |
 | Other logos | `../logos` | -- |
 | Wiki | `../p2pool-v2.wiki` | https://github.com/p2poolv2/p2poolv2/wiki |
+| This site, once deployed | -- | https://p2poolv2.org |
+| Live testnet4 pool and chain explorer | -- | https://testnet4.p2poolv2.org |
+| Public pool metrics, Grafana | -- | https://grafana.p2poolv2.org |
 | Node source | `../p2pool-v2` | https://github.com/p2poolv2/p2poolv2 |
 
 Note the local directory is `p2pool-v2` while the GitHub org and repo are
@@ -41,7 +44,7 @@ In the wiki (`../p2pool-v2.wiki`):
 - `Shares For Small Miners.md` -- the small miner probability and its assumptions
 - `Payout mechanism - Trading Shares For Bitcoin.md` -- coinbase, market makers, trading window
 - `drafts/hashrate-market-overview.md` -- the instrument, what a share is worth, settlement rails, market structure. Newer than the page above and disagrees with it about the window; see the open question at the end of this file
-- `Sharechain Design.md` -- compact blocks, bandwidth and storage numbers
+- `Sharechain Design.md` -- share structure and replication. Its compact-block bandwidth and storage numbers are not on the page; see the note below
 - `Miner Share Address.md` -- the two addresses and the `p2p=` password field
 - `Status.md` -- what actually runs today
 
@@ -55,12 +58,28 @@ In the source repo (`../p2pool-v2`):
 
 ## Things on the page that must stay true
 
-- The page leads with the market: the work you mine is an asset you sell
-  for bitcoin, and that market is P2Poolv2's answer to payout
-  scalability. Firmware caps how many outputs a coinbase can carry, which
-  is the ceiling that stopped the original P2Pool; paying a handful of
-  market makers instead of every miner is what gets past it. Do not demote
-  this to a feature further down the page.
+- The page leads with three properties, and the hero states each as a
+  positive assertion rather than as something the pool lacks. Strunk
+  Rule 11: "no operator approves you" is evasion, "the pool is
+  permissionless" is an assertion. The vocabulary, which should not drift
+  back to the negative form:
+
+  | property | say | not |
+  |---|---|---|
+  | permission | permissionless; it checks your work, not your identity | no account, no operator to approve you |
+  | accounting | auditable; verifiable; every node replays every share | no company keeps the books |
+  | custody | self-custodied; it arrives on a key you hold | the pool never touches it, no custodian |
+
+  The headline names the three properties directly. That is the hero and
+  it should stay the hero.
+- The market is the second idea, not the first. The work you mine is an
+  asset you sell for bitcoin, and that market is P2Poolv2's answer to
+  payout scalability: firmware caps how many outputs a coinbase can
+  carry, which is the ceiling that stopped the original P2Pool, and
+  paying a handful of market makers instead of every miner is what gets
+  past it. That argument lives in "How a share becomes bitcoin" and the
+  hero links to it. Keep it there rather than folding it back into the
+  hero, and do not lose it.
 - Payout runs on two tracks and the distinction is load-bearing. The top N
   miners for a block take an output in that block's coinbase. Everyone
   else sells their share-chain outputs to a market maker. Never write that
@@ -86,7 +105,27 @@ In the source repo (`../p2pool-v2`):
   coinbase payouts run on testnet4; the HTLC scripts and the Lightning
   swap are under "Being built". The hero caption says so and should keep
   saying so.
-- The version in the hero caption, currently 0.15.3.
+- Compact blocks are **not** mentioned, deliberately. The wiki describes
+  shares as compact blocks of roughly 30 kB, giving about 1.3 Mbps of
+  relay instead of 176 Mbps, and the page used to carry that as a fourth
+  answer in "What we changed since the first P2Pool". It came out
+  because it may not be implemented. Do not restore it from the wiki
+  without asking, however good the numbers look.
+- **The ask is always "run a node", never "hash on ours".** The primary
+  CTA in the hero and the top bar both point at `#run`. The pool is only
+  as decentralised as the number of nodes in it, so a page that recruits
+  hashrate onto one public node argues against the project it is selling:
+  the node operator gets the say over whether a miner's work reaches the
+  chain, even though custody of the payout is unaffected. That reasoning
+  is on the page in the first bullet of "If you mine", and it should stay
+  there.
+- The running testnet4 pool is shown as **proof, not as the destination**.
+  The top bar carries a live dot linking to it, the hero offers "See the
+  live chain" as the secondary action, and the status section links it
+  along with the Grafana metrics. It is somewhere to look before you run
+  your own, and for a first try; it is not what the page asks you to do.
+- If a host goes away, fix or remove the claim with it rather than
+  leaving a dead link under a sentence asserting the thing is running.
 - That P2Poolv2 runs on testnet4 and signet, and is not ready for mainnet
   hashrate. The "Where the code is today" section says so plainly. Do not
   soften it without being asked.
@@ -229,6 +268,23 @@ fonts.
 - **`.container` is capped at 1120px here**, narrower than Bootstrap's
   default, so the measure stays readable on a wide screen.
 
+## Deploying
+
+The page is served at `https://p2poolv2.org/`, which is set in the
+`canonical` link and in `og:url`. Copy the directory to the host; nothing
+is compiled.
+
+**Before the first deploy**, note that the apex currently redirects
+elsewhere. As of this writing `https://p2poolv2.org` answers 302 to
+`https://testnet4.p2poolv2.org/dashboard`, so the landing page will not
+be reachable until that redirect is removed. The explorer stays on its
+own subdomain, which is what the page links to.
+
+The social card at `assets/og.png` is generated, 1200x630, and shows the
+headline. If the headline changes, regenerate it: build a 1200x630 page
+with the lockup and the headline using `assets/fonts.css`, screenshot it
+headless, and save it over that file.
+
 ## Working on it
 
 ```
@@ -264,13 +320,17 @@ that actually bite on this page, in the order they get broken:
 - **Use the active voice (10).** "The PPLNS window is recomputed locally"
   became "Each node recomputes the PPLNS window". Name the actor: a node,
   a miner, a market maker, the pool.
-- **Put statements in positive form (11).** "The money never sits in an
-  account somebody else controls" became "the payment goes straight to a
-  key you hold". Keep the negative only where the denial is the point, as
-  in "not ready for your mainnet hashrate".
+- **Put statements in positive form (11).** The trap on this page is
+  that every selling point is an absence: no operator, no account, no
+  custodian, no permission. Stacking those reads as evasion. Name the
+  property instead, which is what "permissionless", "auditable" and
+  "self-custodied" are for; the table under "Things on the page that
+  must stay true" has the mapping. Keep the negative where the denial is
+  the point, as in "not ready for your mainnet hashrate", and in the
+  section on pressure, where the antithesis is the argument.
 - **Definite, specific, concrete language (12).** "That output is the
   thing you can sell" is vague; say what it is and what happens to it.
-  Numbers beat adjectives: 8.57:1, 30 kB, 1.3 Mbps, three uncles.
+  Numbers beat adjectives: 8.57:1, 99.9999996%, three uncles, ten seconds.
 - **Place the emphatic words at the end (18).** The paragraph on pressure
   ends on "It stops counting your shares" because that is the point of it.
 - **Express co-ordinate ideas in similar form (15).** The chain figure's

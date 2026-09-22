@@ -1,0 +1,52 @@
+
+* Permissionless Mining [Hero section]
+
+No centralised operator that builds blocks or tracks share accounting.
+
+No entity custodies your earnings at any point. Your shares are yours.
+
+With CTAs as now.
+
+* Compare to DATUM and SV2
+
+Use current section in index.html with tighter prose.
+
+* P2P network of mining nodes
+
+** Build a sharechain for transparent accounting
+
+A blockchain of shares mined by miners under pool's difficulty target.
+
+All shares are weak blocks, i.e. much lower difficulty than current
+bitcoin difficulty.
+
+** Pay through coinbase
+
+Miners are paid for their shares appearing in the PPLNS window. [Add
+simple clean lines diagram]
+
+Top miners are paid directly from the coinbase. Smaller miners sell
+their shares to the larger miners. [Add simple clean lines diagram]
+
+A hashrate market where any buyer of shares can earn enough shares to
+get a payout of virgin coins directly from the coinbase. Miners need
+to sell shares before they fall out of the PPLNS window. The market
+does price discovery for shares as expiring options.
+
+* Problems with original P2Pool
+
+1. Orphan blocks
+2. Hashrate reporting for miners
+3. Coinbase size limits
+
+* Our Solution Addresses These
+
+1. DAG with uncle blocks
+2. Vardiff for miners based on target share time
+3. Add UTXO/Script based transaction engine
+   1. Each share has a coinbase they can sell
+   2. Atomic swaps between sharechain coinbase and bitcoin (LN, Ark, ecash, etc)
+
+* Swaps overview
+
+How swaps are executed using HTLCs on LN and/or Ark.

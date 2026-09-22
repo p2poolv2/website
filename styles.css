@@ -672,3 +672,27 @@ p {
 .defs dd {
   max-width: 62ch;
 }
+
+/* The running testnet4 pool, flagged in the top bar. The dot is a status
+   light, not decoration: if the pool goes away, this goes with it. */
+.live {
+  font-family: var(--bs-font-monospace);
+  font-size: 0.82rem;
+  letter-spacing: -0.01em;
+  color: var(--p2-white);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.live:hover {
+  color: var(--p2-orange);
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--p2-orange);
+  box-shadow: 0 0 0 3px rgba(var(--p2-orange-rgb), 0.22);
+}

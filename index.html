@@ -3,12 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>P2Poolv2 &mdash; mine a share, sell it for bitcoin</title>
-<meta name="description" content="P2Poolv2 is a peer-to-peer bitcoin mining pool where the work you mine is an asset you sell. Every share carries an output market makers buy for bitcoin over Lightning or Ark, which is how the pool pays more miners than a coinbase has room for. Running on testnet4.">
+<title>P2Poolv2 &mdash; permissionless mining, auditable accounting, self-custodied payouts</title>
+<meta name="description" content="P2Poolv2 is a permissionless peer-to-peer bitcoin mining pool. It checks your work, not your identity. Every node audits the share accounting, and payouts are self-custodied, arriving on a key you hold. Running on testnet4.">
+<link rel="canonical" href="https://p2poolv2.org/">
 <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
-<meta property="og:title" content="P2Poolv2 - mine a share, sell it for bitcoin">
-<meta property="og:description" content="Every share you mine is an output you can sell for bitcoin over Lightning or Ark. That market is how P2Poolv2 pays more miners than a coinbase has room for, the ceiling that stopped the original P2Pool. Running on testnet4.">
+<meta property="og:title" content="P2Poolv2 - permissionless mining, auditable accounting, self-custodied payouts">
+<meta property="og:description" content="Permissionless mining: the pool checks your work, not your identity. Auditable accounting: every node replays every share. Self-custodied payouts: they arrive on a key you hold. Running on testnet4.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://p2poolv2.org/">
+<meta property="og:image" content="https://p2poolv2.org/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/bootstrap.min.css">
@@ -37,6 +43,10 @@
       <a class="d-none d-lg-inline" href="#miners">Mining</a>
       <a class="d-none d-lg-inline" href="#payments">Selling shares</a>
       <a class="d-none d-lg-inline" href="#status">Status</a>
+      <a class="live d-inline-flex align-items-center gap-2"
+         href="https://testnet4.p2poolv2.org">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span><span class="d-none d-sm-inline">Testnet4 </span>live</span></a>
       <a class="btn btn-outline-primary btn-sm" href="#run">Run a node</a>
     </nav>
   </div>
@@ -46,18 +56,19 @@
 
 <section class="band" id="top">
   <div class="container">
-    <h1 class="hero-title mb-4">Mine a share.<br>Sell it for bitcoin.</h1>
+    <h1 class="hero-title mb-4">Permissionless Mining.<br>Auditable, <br>Non-Custodial.</h1>
     <p class="lede mb-0">
-      Every share you mine carries an output on the share chain, and it is
-      yours to sell. Market makers buy those outputs for bitcoin, over
-      Lightning or over Ark, and take a coinbase slot in your place. A coinbase
-      has room for only so many miners, and that ceiling stopped the original
-      P2Pool from growing. The market is how this pool pays past it. No
-      operator keeps the books, and your money goes straight to a key you hold.
+      Permissionless mining: you build the blocks, you custody your shares.
+      The accounting is auditable: every node replays every share and
+      computes the same PPLNS window, so you can verify your own
+      payout.
+      The payout is self-custodied: it arrives as an output in the
+      block&rsquo;s coinbase, or as bitcoin from selling your shares,
+      on a key you hold.
     </p>
     <div class="d-flex flex-wrap gap-3 mt-4">
       <a class="btn btn-primary" href="#run">Run a node</a>
-      <a class="btn btn-outline-light" href="#payments">See how a share sells</a>
+      <a class="btn btn-outline-light" href="https://testnet4.p2poolv2.org">See the live chain</a>
     </div>
 
     <figure class="chainfig mt-5 mb-0">
@@ -102,13 +113,14 @@
       <figcaption>
         <ul class="legend list-unstyled d-flex flex-wrap mt-4 mb-3">
           <li><span class="key key-share"></span>A share: a real bitcoin block, mined at a lower target</li>
-          <li><span class="key key-won"></span>A block: the share that cleared the network target too, and paid everyone</li>
+          <li><span class="key key-won"></span>A block: the share that met the bitcoin target too, and paid everyone</li>
           <li><span class="key key-uncle"></span>An uncle: honest work off the main chain, paid at a discount</li>
         </ul>
         <p class="text-secondary small mb-0">
-          Shares land about every ten seconds, each pointing back at its parent.
-          Every one carries an output its miner owns. The chain, the accounting,
-          and the coinbase payouts run on testnet4 today at version 0.15.3. The
+          Shares land about every ten seconds, each pointing back at
+          its parent.  Every one carries an output its miner owns. The
+          chain, the accounting, and the coinbase payouts run on
+          <a href="https://testnet4.p2poolv2.org">testnet4</a> today. The
           market is what we are building now.
         </p>
       </figcaption>
@@ -130,20 +142,18 @@
         <p>
           Your freedom to choose transactions is therefore worth exactly what
           the pool will pay you for using it. A pool operator is a company in a
-          jurisdiction, and companies can be leaned on. A company told which
-          transactions it may not help confirm need not reject your template, or
-          argue with you, or announce anything at all. It stops counting your
-          shares.
+          jurisdiction, and companies can be pressured. A company that is told which
+          transactions it may not help confirm need not reject your template, it
+	  stops counting your shares.
         </p>
         <p>
-          DATUM and Stratum V2 leave that lever in place. The accounting is the
-          lever, so the accounting is where the pressure lands.
+          The accounting is the lever, so the accounting is where the pressure lands.
+	  DATUM and Stratum V2 leave that lever in place. 
         </p>
         <p class="mb-0">
           P2Poolv2 moves the accounting to every node. Each node replicates the
           share chain, recomputes the PPLNS window, and checks the coinbase your
-          miner works on. Drop a miner from the payout and every other node sees
-          a chain that does not add up.
+          miner works on.
         </p>
       </div>
       <div class="col-lg-5">
@@ -174,15 +184,16 @@
   <div class="container">
     <h2 class="section-title mb-4">What we changed since the first P2Pool</h2>
     <p class="intro">
-      The original P2Pool proved the idea and then ran into three walls:
-      orphaned shares at scale, hashrate readings that made miners think it was
-      broken, and a coinbase that could only hold so many outputs. Each has a
-      specific answer here.
+      The original P2Pool proved the idea of p2p mining poolm and then
+      ran into three walls: orphaned shares at scale, hashrate
+      readings that made miners think it was broken, and a coinbase
+      that could only hold so many outputs. With advances in bitcoin
+      and in DAG protocols, we can solve these problems.
     </p>
 
     <dl class="defs mt-5 mb-0">
       <div class="row gx-0 gy-2 py-4 border-top">
-        <dt class="col-lg-4 pe-lg-5">A graph, not a line</dt>
+        <dt class="col-lg-4 pe-lg-5">A graph, not a linear chain</dt>
         <dd class="col-lg-8 mb-0">
           Shares reference up to three uncles, so work that arrives late or
           races another share still gets paid instead of being orphaned. An
@@ -202,7 +213,7 @@
           chain.
         </dd>
       </div>
-      <div class="row gx-0 gy-2 py-4 border-top">
+      <div class="row gx-0 gy-2 py-4 border-top border-bottom">
         <dt class="col-lg-4 pe-lg-5">Shares that carry Script</dt>
         <dd class="col-lg-8 mb-0">
           The share chain has its own UTXOs and its own Script, built on
@@ -210,14 +221,6 @@
           to an address you control. You sell that output, and because it is a
           real UTXO under a real script, the sale settles atomically instead of
           on a promise.
-        </dd>
-      </div>
-      <div class="row gx-0 gy-2 py-4 border-top border-bottom">
-        <dt class="col-lg-4 pe-lg-5">Compact blocks on the wire</dt>
-        <dd class="col-lg-8 mb-0">
-          A share is a compact block of roughly 30 kB rather than a full block.
-          At five shares every ten seconds, a node relays the chain on about
-          1.3 Mbps instead of 176 Mbps. Home connections can carry a full node.
         </dd>
       </div>
     </dl>
@@ -244,17 +247,20 @@
     </div>
 
     <p class="intro">
-      That number answers the only question a small miner has: will I ever land
+      That number answers an important question for a small miner has: will I ever land
       a share here? Land one share in a retarget window and you have something
-      to sell, and proof that the pool pays what it owes.
+      to sell.
     </p>
 
     <ul class="plain list-unstyled mt-4 mb-0">
       <li>
-        <strong>Run your own node, or use someone else&rsquo;s.</strong>
-        A private node in front of your own farm keeps your work and your
-        payouts under your roof. A public node lets other miners point hashrate
-        at you.
+        <strong>Run your own node.</strong>
+        This is the part that makes the pool worth having: it is only as
+        decentralised as the number of nodes in it. Point a rig at somebody
+        else&rsquo;s node and you have handed them the say over whether your
+        work reaches the chain, even though the payout still lands on your own
+        key. Your own node takes that say back. Run it private, in front of
+        your own farm, or public so other miners can point hashrate at you.
       </li>
       <li>
         <strong>You get paid one of two ways.</strong>
@@ -316,8 +322,7 @@
       in seconds and both carry the same hash lock, so the share chain sees the
       same swap either way. Ark suits a small miner better. Receiving over
       Lightning means holding inbound liquidity, and a home miner who sells a
-      few shares a fortnight has no reason to keep a channel funded. Adaptor
-      signatures remain a third option.
+      few shares a fortnight has no reason to keep a channel funded. 
     </p>
 
     <ol class="swap list-unstyled row row-cols-1 row-cols-sm-2 row-cols-lg-5 g-0 border my-5">
@@ -378,8 +383,12 @@
   <div class="container">
     <h2 class="section-title mb-4">Run a node</h2>
     <p class="intro">
-      You need a bitcoin node the P2Poolv2 node can talk to, and Rust. Use the
-      docker signet if you would rather not point anything real at it yet.
+      A node of your own is the point of the exercise, so this is the part worth
+      the afternoon. You need a bitcoin node the P2Poolv2 node can talk to, and
+      Rust. Use the docker signet if you would rather not point anything real
+      at it yet, or watch the
+      <a href="https://testnet4.p2poolv2.org">testnet4 pool</a> first to see
+      what a running chain looks like.
     </p>
 
     <div class="row g-4 g-lg-5">
@@ -412,7 +421,7 @@ password p2p=&lt;your p2pool address&gt;</code></pre>
           <li>RocksDB installed system-wide keeps build times down.</li>
           <li><a href="https://github.com/p2poolv2/p2poolv2/wiki/Developer-Setup-Notes">Developer setup notes</a></li>
           <li><a href="https://github.com/p2poolv2/p2poolv2/wiki/Multiple-Development-Nodes">Running several nodes locally</a></li>
-          <li><a href="https://github.com/p2poolv2/p2poolv2/wiki/Dashboards">Prometheus and Grafana dashboards</a></li>
+          <li><a href="https://grafana.p2poolv2.org/">Grafana dashboard example from Testnet4</a></li>
         </ul>
       </div>
     </div>
@@ -433,8 +442,8 @@ password p2p=&lt;your p2pool address&gt;</code></pre>
           <li>Private and public nodes, with the share chain replicating between them</li>
           <li>Stratum v1 server with per-miner vardiff</li>
           <li>PPLNS accounting and payouts built into the coinbase</li>
-          <li>Grafana dashboards for local rigs and for the whole chain</li>
-          <li>A block explorer over the share chain, on the CLI and the dashboard</li>
+          <li>Grafana dashboards for local rigs and for the whole chain, <a href="https://grafana.p2poolv2.org">published for the running pool</a></li>
+          <li>A block explorer over the share chain, on the CLI and <a href="https://testnet4.p2poolv2.org">in the dashboard</a></li>
         </ul>
       </div>
       <div class="col-lg-5">
@@ -447,7 +456,14 @@ password p2p=&lt;your p2pool address&gt;</code></pre>
         </ul>
       </div>
     </div>
-    <p class="cta-line mt-5 mb-0">
+    <p class="cta-line mt-5 mb-2">
+      Watch it run: the
+      <a href="https://testnet4.p2poolv2.org">testnet4 chain explorer</a>
+      shows the tip, the shares, and who mined them, and the
+      <a href="https://grafana.p2poolv2.org">pool metrics</a> show hashrate and
+      effort into the current block.
+    </p>
+    <p class="cta-line mb-0">
       Come argue with the design in
       <a href="https://matrix.to/#/#p2poolv2:matrix.org">Matrix</a>,
       or take something off the
@@ -469,6 +485,8 @@ password p2p=&lt;your p2pool address&gt;</code></pre>
       <p class="text-secondary small mt-2 mb-0">Rebooted for bitcoin. MIT or Apache-2.0.</p>
     </div>
     <nav class="foot-nav d-flex flex-wrap gap-4" aria-label="Project links">
+      <a href="https://testnet4.p2poolv2.org">Testnet4 pool</a>
+      <a href="https://grafana.p2poolv2.org">Metrics</a>
       <a href="https://github.com/p2poolv2/p2poolv2">Source</a>
       <a href="https://github.com/p2poolv2/p2poolv2/wiki">Wiki</a>
       <a href="https://github.com/orgs/p2poolv2/projects/1">Project board</a>
