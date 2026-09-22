@@ -1,0 +1,838 @@
+/* SPDX-FileCopyrightText: 2024-2026 P2Poolv2 Developers
+   SPDX-License-Identifier: MIT OR Apache-2.0 */
+
+:root {
+  /* The palette specified in logos/p2poolv2-brand-pack/README.txt, taken
+     from the logo actually in use, p2poolv2-logo-text-network-bitcoin-orange.
+     These are the only colours on this page. Every value below them is one
+     of these at reduced opacity. */
+  --orange: #f7931a;
+  --near-black: #121212;
+  --black: #0b0b0c;
+  --white: #ffffff;
+
+  /* Two marks, and each is used where it has contrast to spare. Orange
+     carries structure, so white marks the found share inside the orange
+     chain figure; prose is white, so orange marks the payoff figure
+     inside it. Orange on black is 8.57:1, white on black is 19.67:1. */
+
+  /* White, stepped down for prose, secondary text, hairlines and the
+     found-share fill. */
+  --white-78: rgba(255, 255, 255, 0.78);
+  --white-56: rgba(255, 255, 255, 0.56);
+  --white-16: rgba(255, 255, 255, 0.16);
+  --white-11: rgba(255, 255, 255, 0.11);
+
+  /* Bitcoin orange, thinned. */
+  --orange-82: rgba(247, 147, 26, 0.82);
+  --orange-70: rgba(247, 147, 26, 0.7);
+  --orange-26: rgba(247, 147, 26, 0.26);
+  --orange-12: rgba(247, 147, 26, 0.12);
+
+  /* Black, for the bar that floats over the page. */
+  --black-88: rgba(11, 11, 12, 0.88);
+
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --sans: "Inter", ui-sans-serif, system-ui, "Helvetica Neue", Arial, sans-serif;
+
+  --gutter: 28px;
+  --measure: 62ch;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--white-78);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--white);
+  text-decoration-color: var(--orange);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--orange);
+}
+
+:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 3px;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  color: var(--white);
+  background: var(--orange-12);
+  padding: 1px 5px;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip:focus {
+  left: var(--gutter);
+  top: 12px;
+  z-index: 10;
+  background: var(--orange);
+  color: var(--white);
+  padding: 8px 14px;
+  text-decoration: none;
+}
+
+.frame {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ---------- top bar ---------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  background: var(--black-88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--white-11);
+}
+
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 58px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.brand-mark {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  fill: var(--orange);
+}
+
+.brand-word {
+  font-family: var(--mono);
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: -0.04em;
+}
+
+.brand-v2 {
+  color: var(--orange);
+}
+
+.topnav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  letter-spacing: -0.01em;
+}
+
+.topnav a {
+  color: var(--white-56);
+  text-decoration: none;
+}
+
+.topnav a:hover {
+  color: var(--white);
+}
+
+.topnav-cta {
+  color: var(--white) !important;
+  border: 1px solid var(--orange);
+  padding: 5px 12px;
+}
+
+.topnav-cta:hover {
+  color: var(--black) !important;
+  background: var(--orange);
+}
+
+/* ---------- headings and rhythm ---------- */
+
+h1 {
+  font-family: var(--mono);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 7.2vw, 4.9rem);
+  line-height: 0.97;
+  letter-spacing: -0.05em;
+  color: var(--white);
+  margin: 0 0 28px;
+}
+
+h2 {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: var(--white);
+  margin: 0 0 22px;
+  max-width: 24ch;
+}
+
+h3 {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin: 0 0 8px;
+}
+
+p {
+  margin: 0 0 18px;
+  max-width: var(--measure);
+}
+
+.band {
+  padding: 92px 0;
+}
+
+.band-rule {
+  border-top: 1px solid var(--orange-26);
+}
+
+.intro {
+  font-size: 1.08rem;
+  color: var(--white-78);
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  padding: 84px 0 76px;
+}
+
+.lede {
+  font-size: 1.17rem;
+  line-height: 1.6;
+  color: var(--white-78);
+  max-width: 58ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 30px 0 0;
+}
+
+.btn {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: var(--black);
+  background: var(--orange);
+  padding: 12px 24px;
+  border: 1px solid var(--orange);
+}
+
+.btn:hover {
+  color: var(--black);
+  background: var(--orange-82);
+  border-color: var(--orange-82);
+}
+
+.btn-quiet {
+  background: transparent;
+  color: var(--white);
+  border-color: var(--white-11);
+}
+
+.btn-quiet:hover {
+  background: transparent;
+  color: var(--white);
+  border-color: var(--white);
+}
+
+/* ---------- the chain figure ---------- */
+
+.chainfig {
+  margin: 56px 0 0;
+}
+
+.chainfig-scroll {
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.dag {
+  display: block;
+  width: 100%;
+  min-width: 660px;
+  height: auto;
+}
+
+.dag .tip {
+  fill: var(--orange);
+  opacity: 0.8;
+}
+
+.edge {
+  fill: none;
+  stroke: var(--orange);
+  stroke-width: 2;
+  opacity: 0.5;
+}
+
+.edge-uncle {
+  stroke-dasharray: 5 5;
+  opacity: 0.38;
+}
+
+.share {
+  fill: var(--near-black);
+  stroke: var(--orange);
+  stroke-width: 2;
+}
+
+.share-won {
+  fill: var(--white-16);
+  stroke: var(--white);
+}
+
+.share-uncle {
+  stroke-dasharray: 4 4;
+  stroke: var(--orange-70);
+}
+
+.legend {
+  list-style: none;
+  margin: 22px 0 16px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  font-size: 0.88rem;
+  color: var(--white-56);
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.key {
+  width: 17px;
+  height: 13px;
+  flex: none;
+  background: var(--near-black);
+  border: 2px solid var(--orange);
+}
+
+.key-won {
+  background: var(--white-16);
+  border-color: var(--white);
+}
+
+.key-uncle {
+  border-style: dashed;
+}
+
+.chainfig figcaption p {
+  font-size: 0.92rem;
+  color: var(--white-56);
+  margin: 0;
+  max-width: 56ch;
+}
+
+/* ---------- two column ---------- */
+
+.two {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.two-main p:last-child,
+.two-side p:last-child {
+  margin-bottom: 0;
+}
+
+.sub {
+  color: var(--orange);
+  margin-bottom: 12px;
+}
+
+.pull {
+  margin: 6px 0 0;
+  padding: 0 0 0 22px;
+  border-left: 2px solid var(--orange);
+}
+
+.pull p {
+  font-family: var(--mono);
+  font-size: 0.98rem;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.pull cite {
+  font-style: normal;
+  font-size: 0.85rem;
+  color: var(--white-56);
+}
+
+/* ---------- comparison table ---------- */
+
+.cmp {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 46px;
+  font-size: 0.95rem;
+}
+
+.cmp caption {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--white-56);
+  padding-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.cmp th,
+.cmp td {
+  text-align: left;
+  padding: 14px 18px 14px 0;
+  border-bottom: 1px solid var(--white-11);
+  vertical-align: top;
+}
+
+.cmp thead th {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--white);
+  border-bottom-color: var(--orange-26);
+}
+
+.cmp tbody th {
+  font-weight: 500;
+  color: var(--white);
+  width: 32%;
+}
+
+.cmp td {
+  color: var(--white-56);
+  width: 34%;
+}
+
+.cmp .yes {
+  color: var(--white);
+}
+
+/* ---------- definition rows ---------- */
+
+.defs {
+  margin: 44px 0 0;
+}
+
+.def {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 40px;
+  padding: 26px 0;
+  border-top: 1px solid var(--white-11);
+}
+
+.def:last-child {
+  border-bottom: 1px solid var(--white-11);
+}
+
+.defs dt {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: -0.03em;
+  color: var(--white);
+}
+
+.defs dd {
+  margin: 0;
+}
+
+.defs dd p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- the one big number ---------- */
+
+.stat {
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  gap: 40px;
+  align-items: baseline;
+  padding: 30px 0 34px;
+  border-top: 1px solid var(--orange-26);
+  border-bottom: 1px solid var(--orange-26);
+  margin-bottom: 38px;
+}
+
+.stat-value {
+  font-family: var(--mono);
+  font-weight: 800;
+  font-size: clamp(2.1rem, 5.4vw, 3.5rem);
+  letter-spacing: -0.055em;
+  line-height: 1;
+  color: var(--orange);
+  margin: 0;
+}
+
+.stat-note {
+  font-size: 0.95rem;
+  color: var(--white-56);
+  margin: 0;
+  max-width: 52ch;
+}
+
+/* ---------- plain lists ---------- */
+
+.plain {
+  list-style: none;
+  margin: 30px 0 0;
+  padding: 0;
+  max-width: var(--measure);
+}
+
+.plain li {
+  padding: 16px 0 16px 20px;
+  border-top: 1px solid var(--white-11);
+  position: relative;
+}
+
+.plain li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 27px;
+  width: 8px;
+  height: 8px;
+  background: var(--orange);
+}
+
+.plain li:last-child {
+  border-bottom: 1px solid var(--white-11);
+}
+
+.plain strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.plain-tight {
+  margin-top: 0;
+  font-size: 0.95rem;
+}
+
+.plain-tight li {
+  padding: 11px 0 11px 20px;
+}
+
+.plain-tight li::before {
+  top: 21px;
+  width: 6px;
+  height: 6px;
+}
+
+/* ---------- swap sequence ---------- */
+
+.swap {
+  counter-reset: step;
+  list-style: none;
+  margin: 42px 0 52px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--white-11);
+  border: 1px solid var(--white-11);
+}
+
+.swap li {
+  counter-increment: step;
+  background: var(--black);
+  padding: 22px 20px 24px;
+}
+
+.swap li::before {
+  content: counter(step);
+  display: block;
+  font-family: var(--mono);
+  font-weight: 800;
+  font-size: 0.82rem;
+  color: var(--orange);
+  margin-bottom: 14px;
+}
+
+.swap h3 {
+  margin-bottom: 8px;
+}
+
+.swap p {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--white-56);
+  margin: 0;
+}
+
+.note {
+  font-size: 0.92rem;
+  color: var(--white-56);
+  margin: 0;
+}
+
+/* ---------- terminal ---------- */
+
+.term {
+  background: var(--near-black);
+  border: 1px solid var(--white-11);
+  border-left: 2px solid var(--orange);
+  padding: 20px 22px;
+  overflow-x: auto;
+  margin-bottom: 18px;
+}
+
+.term pre {
+  margin: 0;
+}
+
+.term code {
+  background: none;
+  padding: 0;
+  font-size: 0.86rem;
+  line-height: 1.75;
+  color: var(--white);
+  white-space: pre;
+}
+
+.term .c {
+  color: var(--white-56);
+}
+
+.term .p {
+  color: var(--orange);
+}
+
+.cta-line {
+  margin-top: 40px;
+  font-size: 1.05rem;
+  color: var(--white);
+}
+
+/* ---------- footer ---------- */
+
+.foot {
+  border-top: 1px solid var(--orange-26);
+  padding: 40px 0 56px;
+}
+
+.foot-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 26px;
+}
+
+.lockup {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  font-family: var(--mono);
+  fill: var(--orange);
+}
+
+.lockup-mesh .dag .tip {
+  fill: var(--orange);
+  opacity: 0.8;
+}
+
+.edge {
+  fill: none;
+  stroke: var(--orange);
+  stroke-width: 2;
+  opacity: 0.35;
+}
+
+.lockup-mesh .ring {
+  fill: none;
+  stroke: var(--orange);
+  stroke-width: 1.5;
+  opacity: 0.25;
+}
+
+.lockup-mesh .node {
+  fill: var(--orange);
+}
+
+.foot-brand p {
+  margin: 10px 0 0;
+  font-size: 0.86rem;
+  color: var(--white-56);
+}
+
+.foot-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 26px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  align-items: flex-start;
+}
+
+.foot-nav a {
+  text-decoration: none;
+  color: var(--white-56);
+}
+
+.foot-nav a:hover {
+  color: var(--orange);
+}
+
+/* ---------- the one motion moment ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .share {
+    opacity: 0;
+    animation: land 460ms ease-out forwards;
+    animation-delay: calc(220ms + var(--i, 0) * 105ms);
+  }
+
+  .edge {
+    opacity: 0;
+    animation: reach 320ms ease-out forwards;
+    animation-delay: calc(300ms + var(--i, 0) * 105ms);
+  }
+
+  .edge-uncle {
+    animation-name: reach-uncle;
+  }
+
+  @keyframes land {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes reach {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes reach-uncle {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 0.38;
+    }
+  }
+}
+
+/* ---------- narrow screens ---------- */
+
+@media (max-width: 860px) {
+  .two,
+  .def,
+  .stat {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .def {
+    gap: 12px;
+  }
+
+  .stat {
+    gap: 16px;
+  }
+
+  .band {
+    padding: 68px 0;
+  }
+
+  .pull {
+    margin-top: 0;
+  }
+
+  .chainfig-scroll {
+    -webkit-mask-image: linear-gradient(to right, var(--black) 84%, transparent 100%);
+    mask-image: linear-gradient(to right, var(--black) 84%, transparent 100%);
+  }
+}
+
+@media (max-width: 620px) {
+  :root {
+    --gutter: 20px;
+  }
+
+  body {
+    font-size: 16px;
+  }
+
+  .topnav {
+    gap: 14px;
+    font-size: 0.76rem;
+  }
+
+  .topnav a:not(.topnav-cta) {
+    display: none;
+  }
+
+  .hero {
+    padding: 56px 0 60px;
+  }
+
+  h2 {
+    max-width: none;
+  }
+}
