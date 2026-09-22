@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>P2Poolv2 &mdash; a bitcoin mining pool where every node keeps the books</title>
-<meta name="description" content="P2Poolv2 is a peer-to-peer bitcoin mining pool. Every node replays every share, computes the same payout, and miners are paid straight from the block coinbase. Running on testnet4.">
+<title>P2Poolv2 &mdash; mine a share, sell it for bitcoin</title>
+<meta name="description" content="P2Poolv2 is a peer-to-peer bitcoin mining pool where the work you mine is an asset you sell. Every share carries an output market makers buy for bitcoin over Lightning or Ark, which is how the pool pays more miners than a coinbase has room for. Running on testnet4.">
 <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
-<meta property="og:title" content="P2Poolv2 - every node keeps the books">
-<meta property="og:description" content="A bitcoin mining pool with no operator to keep books for you. Share accounting runs on every node. Payouts come out of the coinbase. Running on testnet4.">
+<meta property="og:title" content="P2Poolv2 - mine a share, sell it for bitcoin">
+<meta property="og:description" content="Every share you mine is an output you can sell for bitcoin over Lightning or Ark. That market is how P2Poolv2 pays more miners than a coinbase has room for, the ceiling that stopped the original P2Pool. Running on testnet4.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +34,7 @@
     <nav class="topnav" aria-label="Sections">
       <a href="#chain">Share chain</a>
       <a href="#miners">Mining</a>
-      <a href="#payments">Payments</a>
+      <a href="#payments">Selling shares</a>
       <a href="#status">Status</a>
       <a class="topnav-cta" href="#run">Run a node</a>
     </nav>
@@ -45,16 +45,18 @@
 
 <section class="hero" id="top">
   <div class="frame">
-    <h1>Every node<br>keeps the books.</h1>
+    <h1>Mine a share.<br>Sell it for bitcoin.</h1>
     <p class="lede">
-      P2Poolv2 is a bitcoin mining pool with no operator keeping books on your
-      behalf. Every node replays every share, arrives at the same payout, and
-      miners are paid straight out of the block&rsquo;s coinbase. No account, no
-      withdrawal, no one who can quietly drop you from the ledger.
+      Every share you mine carries an output on the P2Poolv2 share chain, and
+      it is yours to sell. Market makers buy those outputs for bitcoin, over
+      Lightning or over Ark, and take a coinbase slot in your place. That market is how the pool pays more
+      miners than a bitcoin coinbase has room for, which is the ceiling that
+      stopped the original P2Pool from growing. No operator keeps the books,
+      and nobody holds your money in between.
     </p>
     <div class="actions">
       <a class="btn" href="#run">Run a node</a>
-      <a class="btn btn-quiet" href="https://github.com/p2poolv2/p2poolv2/wiki">Read the design</a>
+      <a class="btn btn-quiet" href="#payments">See how a share sells</a>
     </div>
 
     <figure class="chainfig">
@@ -103,8 +105,10 @@
           <li><span class="key key-uncle"></span>An uncle: honest work off the main chain, still paid</li>
         </ul>
         <p>
-          Shares land about every ten seconds and each one points back at its
-          parent. Running on testnet4 today, at version 0.15.3.
+          Shares land about every ten seconds, each pointing back at its parent,
+          and every one of them carries an output its miner owns. The chain, the
+          accounting and the coinbase payouts run on testnet4 today at version
+          0.15.3. The market is the part we are building now.
         </p>
       </figcaption>
     </figure>
@@ -113,22 +117,34 @@
 
 <section class="band band-rule" id="control">
   <div class="frame">
-    <h2>A pool controls you through its accounting</h2>
+    <h2>Whoever pays you decides what you mine</h2>
     <div class="two">
       <div class="two-main">
         <p>
-          DATUM and Stratum V2 let a miner build their own block template, and
-          that is real progress. But both leave the share accounting on a server
-          the pool operates. That server decides what goes in the payout
-          distribution it hands back to you. It can stop counting your shares,
-          and by the time anyone can see it happening, the block is already
-          mined and the money is already gone.
+          DATUM and Stratum V2 let a miner build their own block
+          template, and that is real progress. But both leave the
+          share accounting on a server the pool operates, and that
+          server decides what goes into the payout distribution it
+          hands back to you.
         </p>
         <p>
-          P2Poolv2 moves that computation to every node. The share chain is
-          replicated, the PPLNS window is recomputed locally, and the coinbase
-          your miner is working on is one you can check yourself before you hash
-          a single nonce on it.
+          Which means the freedom to choose your transactions is worth
+          exactly as much as the pool&rsquo;s willingness to pay you
+          for using it. A pool operator is a company in a
+          jurisdiction, companies can be leaned on. A company that has
+          been told which transactions it may not help confirm will
+          stop paying you for the work done.
+        </p>
+        <p>
+          That is the part DATUM and Stratum V2 do not fix, and it is
+          not a hypothetical: the accounting is the lever, so the
+          accounting is where the pressure lands.
+        </p>
+        <p>
+          P2Poolv2 moves that computation to every node. The share
+          chain is replicated, the PPLNS window is recomputed locally,
+          and the coinbase your miner works on is the one you built
+          yourself in way that everyone else can validate.
         </p>
       </div>
       <blockquote class="pull">
@@ -234,7 +250,7 @@
     <p class="intro">
       That number is the answer to the only question a small miner really has:
       will I ever land a share here? Land one share in a retarget window and you
-      have something to sell, and you can see for yourself that the pool is
+      have something to sell, and you can check for yourself that the pool is
       paying what it owes.
     </p>
 
@@ -246,11 +262,19 @@
         at you.
       </li>
       <li>
+        <strong>You get paid one of two ways.</strong>
+        If your share of the work puts you among the top N miners for a block,
+        your payout is an output in that block&rsquo;s coinbase. If it does not,
+        and for most miners it will not, you sell your share-chain outputs to a
+        market maker for bitcoin instead. Either way the money never sits in an
+        account somebody else controls.
+      </li>
+      <li>
         <strong>Bring two addresses.</strong>
-        Your bitcoin address receives the PPLNS payout from a found block&rsquo;s
-        coinbase. Your P2Poolv2 address owns the share-chain coinbase, which is
-        the asset you trade. Neither is derived from the other, and the share
-        address must be spend-capable.
+        Your bitcoin address is where a coinbase payout lands. Your P2Poolv2
+        address owns the share-chain coinbase, which is the asset you sell.
+        Neither is derived from the other, and the share address must be
+        spend-capable, because the share chain runs real script validation.
       </li>
       <li>
         <strong>Set it from your miner&rsquo;s password field.</strong>
@@ -271,26 +295,44 @@
 
 <section class="band" id="payments">
   <div class="frame">
-    <h2>If you build payments</h2>
+    <h2>How a share becomes bitcoin</h2>
     <p class="intro">
-      A bitcoin coinbase cannot pay thousands of miners, and mining firmware
-      caps it tighter still. That limit is what stopped the original P2Pool from
-      growing. So P2Poolv2 pays the top N miners directly from the coinbase and
-      turns everyone else&rsquo;s work into a share-chain output they can sell
-      for bitcoin. Market makers buy those outputs and take the coinbase slot in
-      their place.
+      This is the payout scalability answer, so it is worth being precise about
+      it. Bitmain&rsquo;s firmware caps how many outputs a coinbase transaction
+      may carry, which put a hard number on how many miners the original P2Pool
+      could ever pay and therefore on how much variance it could ever absorb.
+      Paying everyone from the coinbase does not scale. Paying a handful of
+      buyers does.
     </p>
     <p class="intro">
-      The swap is an HTLC on the share chain against a Lightning invoice, with
-      the same payment hash on both sides. It settles in seconds and neither
-      side has to trust the other.
+      So P2Poolv2 pays the top N miners from the coinbase directly and gives
+      every other miner a share-chain output instead. Market makers buy those
+      outputs for bitcoin and take the coinbase slot the seller would have had.
+      Ten to fifty buyers can settle the whole pool, however many miners are in
+      it, and the number of miners stops being bounded by the size of a
+      transaction.
+    </p>
+    <p class="intro">
+      The trade is an HTLC on the share chain against a payment on bitcoin,
+      both locked to the same payment hash. Paying reveals the preimage, and
+      the preimage is what releases the shares, so the two halves succeed or
+      fail together and neither side has to trust the other.
+    </p>
+    <p class="intro">
+      That bitcoin half can be a Lightning invoice or an Ark VHTLC. Both
+      settle in seconds and both carry the same hash lock, so the swap is
+      identical from the share chain&rsquo;s side. Ark is the better rail for a
+      small miner, because receiving over Lightning means having inbound
+      liquidity and a home miner selling a few shares a fortnight has no
+      reason to keep a channel funded for it. Adaptor signatures are a third
+      option and stay open.
     </p>
 
     <ol class="swap">
       <li>
-        <h3>Alice invoices</h3>
-        <p>The miner picks a 32-byte preimage and raises a BOLT11 or BOLT12
-        invoice for the sats she wants, carrying its hash.</p>
+        <h3>Alice sets the lock</h3>
+        <p>The miner picks a 32-byte preimage and asks to be paid under its
+        hash: a BOLT11 or BOLT12 invoice on Lightning, or a VHTLC on Ark.</p>
       </li>
       <li>
         <h3>Alice locks her shares</h3>
@@ -300,12 +342,12 @@
       <li>
         <h3>Bob checks both sides</h3>
         <p>The market maker confirms the share HTLC is final and that the hash
-        in it matches the hash in the invoice.</p>
+        in it matches the hash he is being asked to pay under.</p>
       </li>
       <li>
-        <h3>Bob pays over Lightning</h3>
-        <p>Settling the invoice reveals the preimage to him. That is the whole
-        trick: paying is what unlocks the shares.</p>
+        <h3>Bob pays</h3>
+        <p>Settling on either rail reveals the preimage to him. That is the
+        whole trick: paying is what unlocks the shares.</p>
       </li>
       <li>
         <h3>Bob claims the shares</h3>
@@ -330,7 +372,7 @@
       <div class="two-side">
         <h3 class="sub">Read the protocol</h3>
         <ul class="plain plain-tight">
-          <li><a href="https://github.com/p2poolv2/p2poolv2/blob/main/docs/atomic-swap/p2pool-2-lightinig-example.md">Swap walkthrough, end to end</a></li>
+          <li><a href="https://github.com/p2poolv2/p2poolv2/blob/main/docs/atomic-swap/p2pool-2-lightinig-example.md">Swap walkthrough, end to end, over Lightning</a></li>
           <li><a href="https://github.com/p2poolv2/p2poolv2/blob/main/docs/atomic-swap/htlc_scripts.md">HTLC scripts, P2WSH and P2TR</a></li>
           <li><a href="https://github.com/p2poolv2/p2poolv2/wiki/Payout-mechanism---Trading-Shares-For-Bitcoin">Payout mechanism and trading windows</a></li>
         </ul>
@@ -407,7 +449,7 @@ password p2p=&lt;your p2pool address&gt;</code></pre>
       <div class="two-side">
         <h3 class="sub">Being built</h3>
         <ul class="plain plain-tight">
-          <li>Share trading: HTLC scripts and the Lightning swap flow</li>
+          <li>Share trading: the HTLC scripts, and the swap flow over Lightning and Ark</li>
           <li>A terminal app to drive bitcoind, the node and a Lightning node together</li>
           <li>The testnet4 fork that resets difficulty so a few Bitaxes can keep the chain moving</li>
           <li>Wallet support for share-chain outputs</li>

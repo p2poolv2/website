@@ -39,6 +39,7 @@ In the wiki (`../p2pool-v2.wiki`):
 - `Comparison with DATUM and SV2.md` -- the share accounting argument
 - `Shares For Small Miners.md` -- the small miner probability and its assumptions
 - `Payout mechanism - Trading Shares For Bitcoin.md` -- coinbase, market makers, trading window
+- `drafts/hashrate-market-overview.md` -- the instrument, what a share is worth, settlement rails, market structure. Newer than the page above and disagrees with it about the window; see the open question at the end of this file
 - `Sharechain Design.md` -- compact blocks, bandwidth and storage numbers
 - `Miner Share Address.md` -- the two addresses and the `p2p=` password field
 - `Status.md` -- what actually runs today
@@ -53,6 +54,37 @@ In the source repo (`../p2pool-v2`):
 
 ## Things on the page that must stay true
 
+- The page leads with the market: the work you mine is an asset you sell
+  for bitcoin, and that market is P2Poolv2's answer to payout
+  scalability. Firmware caps how many outputs a coinbase can carry, which
+  is the ceiling that stopped the original P2Pool; paying a handful of
+  market makers instead of every miner is what gets past it. Do not demote
+  this to a feature further down the page.
+- Payout runs on two tracks and the distinction is load-bearing. The top N
+  miners for a block take an output in that block's coinbase. Everyone
+  else sells their share-chain outputs to a market maker. Never write that
+  miners are paid from the coinbase without saying which of the two you
+  mean; an earlier draft did and it was wrong.
+- The argument against DATUM and Stratum V2 is about censorship, not just
+  decentralisation for its own sake. Template freedom is worth only as
+  much as the pool's willingness to pay for its use: an operator is an
+  organisation with a jurisdiction and can be pressured, and it does not
+  have to reject a template to punish one, it just stops counting the
+  miner's shares. Keep that causal chain intact; a version that only says
+  "accounting is centralised" loses the point. Source: the opening of
+  `Comparison with DATUM and SV2.md` in the wiki.
+- Settlement has two rails and both get named: Lightning and Ark. The
+  share-chain side is an HTLC either way; the bitcoin side is a BOLT11 or
+  BOLT12 invoice, or an Ark VHTLC, under the same payment hash. Ark is the
+  better rail for a small miner because receiving over Lightning requires
+  inbound liquidity. Adaptor signatures remain a third option. Source:
+  `drafts/hashrate-market-overview.md` in the wiki, section 6. Do not let
+  the page drift back to Lightning-only; `docs/atomic-swap/` in the node
+  repo only documents the Lightning flow, which is why it reads that way.
+- The market is designed, not shipped. The chain, the accounting and the
+  coinbase payouts run on testnet4; the HTLC scripts and the Lightning
+  swap are under "Being built". The hero caption says so and should keep
+  saying so.
 - The version in the hero caption, currently 0.15.3.
 - That P2Poolv2 runs on testnet4 and signet, and is not ready for mainnet
   hashrate. The "Where the code is today" section says so plainly. Do not
@@ -164,3 +196,20 @@ Look at the screenshot. Check 390px wide as well as desktop.
   information, and no horizontal scroll at phone width.
 - Copy is plain and active. Say what a thing does rather than selling it.
   Where the honest answer is "not yet", say that.
+
+## Open question
+
+The page describes the trading window as maturity after about a day of
+share blocks, closing when the PPLNS window moves past that depth. That
+comes from `Payout mechanism - Trading Shares For Bitcoin.md`.
+
+The newer `drafts/hashrate-market-overview.md` describes it differently:
+the PPLNS window is a sliding window of 2,016 bitcoin blocks, a share
+mined at height `x` expires at `x + 2016`, expiry is continuous rather
+than batched, and the earlier `8 x D` work cap has been dropped on
+purpose. It also prices shares in sats per EH and sets out a two-sided
+order book in 144-block buckets.
+
+These are different models and the draft looks like the current thinking.
+The page has not been updated to it because the file is in `drafts/`. Ask
+before rewriting the trading window section.
