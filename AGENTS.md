@@ -204,12 +204,27 @@ return nothing at all.
 
 Assets in `assets/`:
 
-- `logo.svg` -- the pack's full lockup, repaired, transparent background,
-  Bitcoin Orange, wordmark set in JetBrains Mono. Inlined into the footer
-  so it picks up the page webfont; the standalone file is for reuse
-  elsewhere.
-- `mark.svg` -- the pack's four-node mark, used as the favicon and inlined
-  in the top bar.
+- `logo.png` -- the lockup, used in **both** the top bar (38px tall) and
+  the footer (200px wide). It is the pack's
+  `p2poolv2-logo-text-network-bitcoin-orange-transparent`, cropped to the
+  artwork and quantised to 64 colours, 760x380 and 28 KB. Cropping to the
+  artwork is what makes the small size work: the shipped file has a wide
+  transparent margin, and the wordmark is only 29% of the full artwork's
+  height.
+- `logo.svg` -- the same lockup as vector, copied unchanged from the
+  pack, kept as the master for print and reuse. The page does **not** use
+  it: the pack sets the wordmark in `<text>`, and an SVG loaded through
+  an `img` has no webfont, so it substitutes whatever sans the machine
+  happens to have. It matches on Linux by luck, because the artwork was
+  rendered from DejaVu, and would not on macOS or Windows.
+- Do not use `p2poolv2-logo-text-network-bitcoin-orange.png` or the
+  matching `.svg` on a dark page. Both bake in a `#121212` background
+  rectangle, which shows as a lighter box against the `#0B0B0C` page.
+  The `-transparent` variants are the ones to take.
+- `mark.svg` -- the pack's four-node mark in Bitcoin Orange, used as the
+  favicon. The top bar used to use it alongside a wordmark typed in
+  JetBrains Mono; it now carries the real lockup instead, so this file is
+  only the favicon.
 
 The pack's `README.txt` lists the defects still open in the pack itself:
 a dead red stylesheet and stray `fill:#00001a` inside the orange logo, two
@@ -255,6 +270,24 @@ Licences live in `assets/fonts/`. Inter and JetBrains Mono are both SIL
 OFL 1.1, which permits redistribution; keep the licence files next to the
 fonts.
 
+## The logo at small sizes
+
+The lockup is height-inefficient: the wordmark occupies 29% of the
+artwork's height and the rest is mesh, and "v2" sits on a dropped
+baseline below and right of "p2pool". Both are composition decisions in
+the artwork, so neither can be fixed in CSS. In practice this means:
+
+- Crop to the artwork before using it small. `assets/logo.png` already
+  is; the files in the pack are not.
+- 38px is the floor that still reads in the top bar. Below that the "v2"
+  closes up and the mesh turns to speckle.
+- Two redrawn alternatives were mocked up and not adopted: a single
+  scalable lockup with the nodes bound to the letterforms, and a family
+  of primary plus compact lockup plus icon. If the logo is ever revisited,
+  those are the two shapes the problem has, and the wordmark should be
+  outlined rather than left as `<text>`, which is what the pack's own
+  README advises.
+
 ## Bootstrap gotchas found here
 
 - **A `.row` that carries a border needs `gx-0`.** Bootstrap rows use
@@ -282,8 +315,8 @@ own subdomain, which is what the page links to.
 
 The social card at `assets/og.png` is generated, 1200x630, and shows the
 headline. If the headline changes, regenerate it: build a 1200x630 page
-with the lockup and the headline using `assets/fonts.css`, screenshot it
-headless, and save it over that file.
+using `assets/logo.png` and the headline set in `assets/fonts.css`,
+screenshot it headless, and save it over that file.
 
 ## Working on it
 

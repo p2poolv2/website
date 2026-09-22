@@ -1,13 +1,559 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1010" height="360" viewBox="20 100 1010 360" role="img" aria-label="P2Poolv2">
-  <style>
-    .word { fill: #F7931A; }
-    .node { fill: #F7931A; }
-    .edge { stroke: #F7931A; stroke-width: 2; opacity: .35; fill: none; }
-    .ring { stroke: #F7931A; stroke-width: 1.5; opacity: .25; fill: none; }
-  </style>
-  <g id="mesh"><path d="M37.7,225.8 L160.1,148.1" class="edge"/><path d="M327.7,392.7 L546.8,123.3" class="edge"/><path d="M160.1,148.1 L917.5,299.2" class="edge"/><path d="M546.8,123.3 L537.6,315.8" class="edge"/><path d="M955.8,253.1 L943.3,242.9" class="edge"/><path d="M52.3,299.7 L37.2,301.1" class="edge"/><path d="M123.6,387.9 L71.9,338.3" class="edge"/><path d="M448.7,119.8 L546.8,123.3" class="edge"/><path d="M37.7,225.8 L37.2,301.1" class="edge"/><path d="M520.6,448.8 L434.1,404.3" class="edge"/><path d="M37.7,225.8 L955.8,253.1" class="edge"/><path d="M892.1,232.9 L943.3,242.9" class="edge"/><path d="M968.6,205.9 L955.8,253.1" class="edge"/><path d="M160.1,148.1 L328.4,189.0" class="edge"/><path d="M51.0,301.3 L52.3,299.7" class="edge"/><path d="M169.1,394.5 L71.9,338.3" class="edge"/><path d="M51.0,301.3 L520.6,448.8" class="edge"/><path d="M434.1,404.3 L546.8,123.3" class="edge"/><path d="M434.1,404.3 L327.7,392.7" class="edge"/><path d="M51.0,301.3 L71.9,338.3" class="edge"/><path d="M123.6,387.9 L917.5,299.2" class="edge"/><path d="M551.5,390.3 L649.2,445.6" class="edge"/><path d="M932.3,263.0 L955.8,253.1" class="edge"/><path d="M448.7,119.8 L649.2,445.6" class="edge"/><path d="M892.1,232.9 L52.3,299.7" class="edge"/><path d="M520.6,448.8 L649.2,445.6" class="edge"/><path d="M520.6,448.8 L537.6,315.8" class="edge"/><path d="M551.5,390.3 L537.6,315.8" class="edge"/><path d="M892.1,232.9 L328.4,189.0" class="edge"/><path d="M39.4,364.6 L71.9,338.3" class="edge"/><path d="M51.0,301.3 L37.2,301.1" class="edge"/><path d="M932.3,263.0 L917.5,299.2" class="edge"/><path d="M169.1,394.5 L434.1,404.3" class="edge"/><path d="M955.8,253.1 L434.1,404.3" class="edge"/><path d="M968.6,205.9 L943.3,242.9" class="edge"/><path d="M123.6,387.9 L169.1,394.5" class="edge"/><path d="M836.2,413.4 L899.8,312.2" class="edge"/><path d="M169.1,394.5 L327.7,392.7" class="edge"/><path d="M968.6,205.9 L537.6,315.8" class="edge"/><path d="M836.2,413.4 L448.7,119.8" class="edge"/><path d="M836.2,413.4 L917.5,299.2" class="edge"/><path d="M932.3,263.0 L892.1,232.9" class="edge"/><path d="M932.3,263.0 L448.7,119.8" class="edge"/><path d="M899.8,312.2 L917.5,299.2" class="edge"/><path d="M932.3,263.0 L899.8,312.2" class="edge"/><path d="M37.2,301.1 L39.4,364.6" class="edge"/><path d="M551.5,390.3 L520.6,448.8" class="edge"/><path d="M448.7,119.8 L328.4,189.0" class="edge"/><path d="M37.7,225.8 L52.3,299.7" class="edge"/><path d="M649.2,445.6 L434.1,404.3" class="edge"/><path d="M932.3,263.0 L943.3,242.9" class="edge"/><circle cx="123.6" cy="387.9" r="10" class="node"/><circle cx="932.3" cy="263.0" r="10" class="node"/><circle cx="551.5" cy="390.3" r="10" class="node"/><circle cx="169.1" cy="394.5" r="10" class="node"/><circle cx="968.6" cy="205.9" r="10" class="node"/><circle cx="51.0" cy="301.3" r="10" class="node"/><circle cx="37.7" cy="225.8" r="10" class="node"/><circle cx="892.1" cy="232.9" r="10" class="node"/><circle cx="836.2" cy="413.4" r="10" class="node"/><circle cx="52.3" cy="299.7" r="10" class="node"/><circle cx="899.8" cy="312.2" r="10" class="node"/><circle cx="37.2" cy="301.1" r="10" class="node"/><circle cx="160.1" cy="148.1" r="10" class="node"/><circle cx="448.7" cy="119.8" r="10" class="node"/><circle cx="955.8" cy="253.1" r="10" class="node"/><circle cx="520.6" cy="448.8" r="10" class="node"/><circle cx="649.2" cy="445.6" r="10" class="node"/><circle cx="434.1" cy="404.3" r="10" class="node"/><circle cx="39.4" cy="364.6" r="10" class="node"/><circle cx="917.5" cy="299.2" r="10" class="node"/><circle cx="327.7" cy="392.7" r="10" class="node"/><circle cx="328.4" cy="189.0" r="10" class="node"/><circle cx="943.3" cy="242.9" r="10" class="node"/><circle cx="546.8" cy="123.3" r="10" class="node"/><circle cx="71.9" cy="338.3" r="10" class="node"/><circle cx="537.6" cy="315.8" r="10" class="node"/><circle cx="434.1" cy="404.3" r="14" class="ring"/><circle cx="434.1" cy="404.3" r="24" class="ring"/><circle cx="551.5" cy="390.3" r="14" class="ring"/><circle cx="551.5" cy="390.3" r="24" class="ring"/><circle cx="327.7" cy="392.7" r="14" class="ring"/><circle cx="520.6" cy="448.8" r="14" class="ring"/><circle cx="51.0" cy="301.3" r="14" class="ring"/><circle cx="51.0" cy="301.3" r="24" class="ring"/><circle cx="649.2" cy="445.6" r="14" class="ring"/><circle cx="649.2" cy="445.6" r="24" class="ring"/><circle cx="123.6" cy="387.9" r="14" class="ring"/></g>
-  <g font-family='&quot;JetBrains Mono&quot;, &quot;Fira Code&quot;, Inter, Montserrat, sans-serif' letter-spacing="-8">
-    <text x="120" y="355" class="word" font-weight="800" font-size="190">p2pool</text>
-    <text x="840" y="385" class="word" font-weight="800" font-size="110">v2</text>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1200"
+   height="600"
+   viewBox="0 0 1200 600"
+   version="1.1"
+   id="svg88"
+   sodipodi:docname="p2poolv2-logo-text-network-bitcoin-orange-transparent.svg"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   inkscape:export-filename="p2poolv2-logo-text-network-bitcoin-orange-transparent.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview88"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.5403896"
+     inkscape:cx="649.53138"
+     inkscape:cy="480.2091"
+     inkscape:window-width="1745"
+     inkscape:window-height="1091"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer5" />
+  <defs
+     id="defs1">
+    <style
+       id="style1"><![CDATA[
+      :root {
+        --red: #D32F2F;
+        --black: #0B0B0C;
+        --white: #FFFFFF;
+        --gold: #FFB300;
+      }
+      .word { fill: var(--red); font-kerning: normal; letter-spacing: 0px; }
+      .v2 { fill: var(--red); font-weight: 700; }
+      .node { fill: var(--red); }
+      .edge { stroke: #D32F2F; stroke-width: 2; opacity: .35; fill: none; }
+      .ring { stroke: #D32F2F; stroke-width: 1.5; opacity: .25; fill: none; }
+    ]]></style>
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="text"
+     style="display:inline" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="paths" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="dots">
+    <g
+       id="g3"
+       transform="matrix(1.5671004,0,0,1.5671004,-342.83227,-167.82398)">
+      <g
+         id="g2"
+         style="display:inline;fill:#f7931a;fill-opacity:1">
+        <circle
+           cx="300.11844"
+           cy="403.77536"
+           r="24"
+           class="ring"
+           id="circle2"
+           style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;fill:#f7931a;fill-opacity:1" />
+        <g
+           id="g1"
+           transform="translate(-26.998584,6.4411877)"
+           style="fill:#f7931a;fill-opacity:1">
+          <circle
+             cx="327.12689"
+             cy="397.82498"
+             r="14"
+             class="ring"
+             id="circle88"
+             style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;fill:#f7931a;fill-opacity:1" />
+          <circle
+             cx="327.12689"
+             cy="397.82498"
+             r="10"
+             class="node"
+             id="circle52"
+             style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;fill:#f7931a;fill-opacity:1" />
+        </g>
+      </g>
+      <text
+         x="295.81262"
+         y="353.89459"
+         class="word"
+         font-weight="800"
+         font-size="190px"
+         id="text1"
+         style="font-weight:800;font-size:190px;letter-spacing:0px;display:inline;fill:#f7931a;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-dasharray:none;stroke-opacity:1"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:190px;font-family:Montserrat;-inkscape-font-specification:'Montserrat, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#f7931a;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-dasharray:none;stroke-opacity:1"
+           id="tspan88">p2pool</tspan></text>
+      <text
+         x="830.63324"
+         y="438.35709"
+         class="v2"
+         font-weight="800"
+         font-size="110px"
+         id="text2"
+         style="font-weight:700;font-size:110px;display:inline;fill:#f7931a;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-dasharray:none;stroke-opacity:1"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:110px;font-family:Montserrat;-inkscape-font-specification:'Montserrat, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#f7931a;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-dasharray:none;stroke-opacity:1"
+           id="tspan89">v2</tspan></text>
+      <path
+         d="m 354.45,159.22291 2.25962,46.68616"
+         class="edge"
+         id="path90"
+         sodipodi:nodetypes="cc"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="M 244.44168,308.3688 356.70962,205.90907"
+         class="edge"
+         id="path91"
+         sodipodi:nodetypes="cc"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="M 274.96898,253.08268 353.83702,158.025"
+         class="edge"
+         id="path2"
+         sodipodi:nodetypes="cc"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 521.43702,402.625 219.1,-269.4"
+         class="edge"
+         id="path3"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 740.53702,133.225 -9.2,192.5"
+         class="edge"
+         id="path5"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 912.54777,219.28227 -12.5,-10.2"
+         class="edge"
+         id="path6"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 299.73215,404.50393 -16.46193,-58.7586"
+         class="edge"
+         id="path8"
+         sodipodi:nodetypes="cc"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 642.43702,129.725 98.1,3.5"
+         class="edge"
+         id="path9"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 714.33702,458.725 -86.5,-44.5"
+         class="edge"
+         id="path11"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 848.84777,199.08227 51.2,10"
+         class="edge"
+         id="path13"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 925.34777,172.08227 -12.8,47.2"
+         class="edge"
+         id="path14"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 353.83702,158.025 168.3,40.9"
+         class="edge"
+         id="path15"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 244.73702,311.225 1.3,-1.6"
+         class="edge"
+         id="path16"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="M 362.83702,404.425 281.56666,344.5388"
+         class="edge"
+         id="path17"
+         sodipodi:nodetypes="cc"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 244.73702,311.225 469.6,147.5"
+         class="edge"
+         id="path18"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 627.83702,414.225 112.7,-281"
+         class="edge"
+         id="path19"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 627.83702,414.225 -106.4,-11.6"
+         class="edge"
+         id="path20"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 244.73702,311.225 37.70664,33.96929"
+         class="edge"
+         id="path21"
+         sodipodi:nodetypes="cc"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 745.23702,400.225 97.7,55.3"
+         class="edge"
+         id="path23"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 889.04777,229.18227 23.5,-9.9"
+         class="edge"
+         id="path24"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 642.43702,129.725 200.5,325.8"
+         class="edge"
+         id="path25"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="M 889.06665,234.52745 246.03702,309.625"
+         class="edge"
+         id="path26"
+         sodipodi:nodetypes="cc"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 714.33702,458.725 128.6,-3.2"
+         class="edge"
+         id="path27"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 714.33702,458.725 17,-133"
+         class="edge"
+         id="path28"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="M 889.65933,232.45307 522.13702,198.925"
+         class="edge"
+         id="path30"
+         sodipodi:nodetypes="cc"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 362.83702,404.425 265,9.8"
+         class="edge"
+         id="path34"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 925.34777,172.08227 -25.3,37"
+         class="edge"
+         id="path36"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 300.7763,404.35532 62.06072,0.0697"
+         class="edge"
+         id="path37"
+         sodipodi:nodetypes="cc"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 362.83702,404.425 158.6,-1.8"
+         class="edge"
+         id="path39"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 889.04777,229.18227 -40.2,-30.1"
+         class="edge"
+         id="path43"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 745.23702,400.225 -30.9,58.5"
+         class="edge"
+         id="path48"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 642.43702,129.725 -120.3,69.2"
+         class="edge"
+         id="path49"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="M 271.93828,258.31754 246.03702,309.625"
+         class="edge"
+         id="path50"
+         sodipodi:nodetypes="cc"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 842.93702,455.525 -215.1,-41.3"
+         class="edge"
+         id="path51"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="m 889.04777,229.18227 11,-20.1"
+         class="edge"
+         id="path52"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <path
+         d="M 848.58187,198.79024 742.33022,132.57539"
+         class="edge"
+         id="path89"
+         sodipodi:nodetypes="cc"
+         style="display:inline;fill:#00001a;fill-opacity:1;stroke:#f7931a;stroke-opacity:1" />
+      <g
+         id="g6"
+         transform="translate(225.90629,-206.69263)"
+         style="display:inline">
+        <circle
+           cx="300.11844"
+           cy="403.77536"
+           r="24"
+           class="ring"
+           id="circle3"
+           style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;fill:#f7931a;fill-opacity:1" />
+        <g
+           id="g5"
+           transform="translate(-26.998584,6.4411877)">
+          <circle
+             cx="327.12689"
+             cy="397.82498"
+             r="14"
+             class="ring"
+             id="circle4"
+             style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;fill:#f7931a;fill-opacity:1" />
+          <circle
+             cx="327.12689"
+             cy="397.82498"
+             r="10"
+             class="node"
+             id="circle5"
+             style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;fill:#f7931a;fill-opacity:1" />
+        </g>
+      </g>
+      <circle
+         cx="282.34048"
+         cy="343.88062"
+         r="24"
+         class="ring"
+         id="circle85"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="889.04779"
+         cy="229.18227"
+         r="10"
+         class="node"
+         id="circle53"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="745.23706"
+         cy="400.22498"
+         r="10"
+         class="node"
+         id="circle54"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="362.83701"
+         cy="404.42499"
+         r="10"
+         class="node"
+         id="circle55"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="925.34778"
+         cy="172.08224"
+         r="10"
+         class="node"
+         id="circle56"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="282.34048"
+         cy="343.88062"
+         r="10"
+         class="node"
+         id="circle57"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="273.59082"
+         cy="254.30617"
+         r="10"
+         class="node"
+         id="circle58"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="848.84778"
+         cy="199.08224"
+         r="10"
+         class="node"
+         id="circle59"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="827.25385"
+         cy="333.70312"
+         r="10"
+         class="node"
+         id="circle60"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="281.56177"
+         cy="288.00266"
+         r="14"
+         class="ring"
+         id="circle84"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="281.56177"
+         cy="288.00266"
+         r="10"
+         class="node"
+         id="circle61"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="249.06596"
+         cy="310.11673"
+         r="10"
+         class="node"
+         id="circle63"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="353.83701"
+         cy="158.02499"
+         r="10"
+         class="node"
+         id="circle64"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="642.43707"
+         cy="129.72499"
+         r="10"
+         class="node"
+         id="circle65"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="912.54779"
+         cy="219.28227"
+         r="10"
+         class="node"
+         id="circle66"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="714.33704"
+         cy="458.72498"
+         r="10"
+         class="node"
+         id="circle67"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="842.93707"
+         cy="455.52499"
+         r="10"
+         class="node"
+         id="circle68"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="627.83704"
+         cy="414.22498"
+         r="10"
+         class="node"
+         id="circle69"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="521.43707"
+         cy="402.625"
+         r="10"
+         class="node"
+         id="circle72"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="900.04779"
+         cy="209.08224"
+         r="10"
+         class="node"
+         id="circle74"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="740.53705"
+         cy="133.22499"
+         r="10"
+         class="node"
+         id="circle75"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="713.83826"
+         cy="336.66171"
+         r="10"
+         class="node"
+         id="circle77"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="627.83704"
+         cy="414.22498"
+         r="14"
+         class="ring"
+         id="circle78"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="627.83704"
+         cy="414.22498"
+         r="24"
+         class="ring"
+         id="circle79"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="745.23706"
+         cy="400.22498"
+         r="14"
+         class="ring"
+         id="circle80"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="745.23706"
+         cy="400.22498"
+         r="24"
+         class="ring"
+         id="circle81"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="521.43707"
+         cy="402.625"
+         r="14"
+         class="ring"
+         id="circle82"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="714.33704"
+         cy="458.72498"
+         r="14"
+         class="ring"
+         id="circle83"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="842.93707"
+         cy="455.52499"
+         r="14"
+         class="ring"
+         id="circle86"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="842.93707"
+         cy="455.52499"
+         r="24"
+         class="ring"
+         id="circle87"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+      <circle
+         cx="356.94141"
+         cy="205.90462"
+         r="10"
+         class="node"
+         id="circle89"
+         style="font-family:'JetBrains Mono', 'Fira Code', Inter, Montserrat, sans-serif;display:inline;fill:#f7931a;fill-opacity:1" />
+    </g>
   </g>
 </svg>

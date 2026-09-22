@@ -9,7 +9,7 @@
         being overridden one rule at a time;
      2. sets the type scale, which is brand rather than framework;
      3. styles the handful of components Bootstrap has no equivalent
-        for: the chain figure, the logo lockup, the terminal blocks.
+        for: the chain figure, the terminal blocks, the hairline lists.
 
    Anything a Bootstrap utility class can do, do in the markup instead
    of adding a rule here. */
@@ -230,19 +230,10 @@ p {
   border-bottom: 1px solid var(--bs-border-color);
 }
 
-.brand-mark {
-  width: 22px;
-  height: 22px;
-  flex: none;
-  fill: var(--p2-orange);
-}
-
-.brand-word {
-  font-family: var(--bs-font-monospace);
-  font-weight: 800;
-  font-size: 1.05rem;
-  letter-spacing: -0.04em;
-  color: var(--p2-white);
+.brand-logo {
+  display: block;
+  height: 38px;
+  width: auto;
 }
 
 .topnav {
@@ -534,35 +525,6 @@ p {
 
 .term .p {
   color: var(--p2-orange);
-}
-
-/* the brand lockup in the footer */
-
-.lockup {
-  display: block;
-  width: 100%;
-  max-width: 380px;
-  height: auto;
-  font-family: var(--bs-font-monospace);
-  fill: var(--p2-orange);
-}
-
-.lockup-mesh .edge {
-  fill: none;
-  stroke: var(--p2-orange);
-  stroke-width: 2;
-  opacity: 0.35;
-}
-
-.lockup-mesh .ring {
-  fill: none;
-  stroke: var(--p2-orange);
-  stroke-width: 1.5;
-  opacity: 0.25;
-}
-
-.lockup-mesh .node {
-  fill: var(--p2-orange);
 }
 
 .foot-nav {

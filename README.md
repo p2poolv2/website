@@ -11,7 +11,8 @@ styles.css                 the theme, the type scale, and the bespoke bits
 assets/bootstrap.min.css   Bootstrap 5.3.3, vendored
 assets/fonts.css           generated @font-face rules, do not hand-edit
 assets/fonts/              Inter and JetBrains Mono woff2, plus licences
-assets/logo.svg            the brand-pack lockup, repaired
+assets/logo.png            the brand-pack lockup, used in the footer
+assets/logo.svg            the same lockup as vector, master copy
 assets/mark.svg            the brand-pack mark, used as the favicon
 AGENTS.md                  conventions, and where the wiki and repo live
 ```
