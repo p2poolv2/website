@@ -1,15 +1,19 @@
 # P2Poolv2 website
 
 The landing page at the root of the P2Poolv2 project. Bootstrap 5.3 CSS
-from a CDN plus one small stylesheet. No build step, no npm, and no
-JavaScript.
+plus one small stylesheet. No build step, no npm, no JavaScript, and
+nothing loaded from a third party: the page renders with the network
+down.
 
 ```
-index.html      the page
-styles.css      all styles, including the one page-load animation
-assets/logo.svg the brand-pack lockup, repaired
-assets/mark.svg the brand-pack mark, used as the favicon
-AGENTS.md       where the brand pack, wiki and source repo live
+index.html                 the page
+styles.css                 the theme, the type scale, and the bespoke bits
+assets/bootstrap.min.css   Bootstrap 5.3.3, vendored
+assets/fonts.css           generated @font-face rules, do not hand-edit
+assets/fonts/              Inter and JetBrains Mono woff2, plus licences
+assets/logo.svg            the brand-pack lockup, repaired
+assets/mark.svg            the brand-pack mark, used as the favicon
+AGENTS.md                  conventions, and where the wiki and repo live
 ```
 
 ## Working on it

@@ -3,8 +3,9 @@
 Guidance for AI coding agents working on the P2Poolv2 website.
 
 This directory is the public landing page for P2Poolv2. It is plain HTML
-and CSS with no build step and no dependencies beyond two webfonts from
-Google Fonts. It is a separate project from the node source, and is not
+and CSS with no build step. Everything it loads is vendored into
+`assets/`, so the page makes no third-party requests and renders with the
+network down. It is a separate project from the node source, and is not
 part of the `p2poolv2` git repository.
 
 ## Where everything is
@@ -177,6 +178,44 @@ SVGs that are not well-formed XML, and a `palette.svg` still drawn in red.
 None of them affect this site. The geometry in `assets/logo.svg` was
 extracted from the outlines file and repaired.
 
+## Regenerating the vendored assets
+
+**Bootstrap.** Download the release and check it against the hash
+published for the CDN copy, which is how you know the file is the real
+one:
+
+```
+curl -o assets/bootstrap.min.css \
+  https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css
+openssl dgst -sha384 -binary assets/bootstrap.min.css | openssl base64 -A
+# expect QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH
+```
+
+**Fonts.** `assets/fonts.css` is generated and should not be hand-edited.
+Fetch the Google Fonts stylesheet with a modern browser User-Agent, or it
+serves legacy formats instead of woff2:
+
+```
+curl -A 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36' \
+  'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700;800&display=swap'
+```
+
+Two things about the result are worth knowing before you regenerate it:
+
+- It returns 45 `@font-face` blocks across seven subsets. Only `latin`
+  and `latin-ext` are vendored, because the page is ASCII. Pulling all
+  seven would triple the weight for nothing.
+- Both families are **variable fonts**, so Google serves the same file
+  for every weight you ask for. Naively downloading per weight gives you
+  four identical copies of JetBrains Mono. There is one file per family
+  per subset, and the `font-weight: 400 800` range in the `@font-face`
+  is what lets the browser interpolate. If you add a weight outside a
+  declared range, widen the range rather than adding a file.
+
+Licences live in `assets/fonts/`. Inter and JetBrains Mono are both SIL
+OFL 1.1, which permits redistribution; keep the licence files next to the
+fonts.
+
 ## Bootstrap gotchas found here
 
 - **A `.row` that carries a border needs `gx-0`.** Bootstrap rows use
@@ -250,11 +289,22 @@ short, or that he avoid all detail, but that every word tell."
 
 ## House rules
 
-- The page is built on **Bootstrap 5.3.3 CSS**, loaded from jsDelivr with
-  an SRI hash. There is no build step, no npm, and no Bootstrap
-  JavaScript: the top bar does not collapse, it hides its links with
-  `d-none d-lg-inline` instead, so the page stays CSS-only. If something
-  needs JavaScript, ask first.
+- The page is built on **Bootstrap 5.3.3 CSS**, vendored at
+  `assets/bootstrap.min.css`. There is no build step, no npm, and no
+  Bootstrap JavaScript: the top bar does not collapse, it hides its links
+  with `d-none d-lg-inline` instead, so the page stays CSS-only. If
+  something needs JavaScript, ask first.
+- **Nothing loads from a third party.** No CDN, no Google Fonts, no
+  analytics. Adding an external `<link>`, `<script>` or `@import` is a
+  change of policy, not a detail: it puts visitor IPs in someone else's
+  logs and breaks the page wherever that host is blocked, which for a
+  mining audience on isolated networks is a real case. To check, grep the
+  page for `//` in a URL, or render it with DNS blocked:
+
+  ```
+  chromium --headless --host-resolver-rules="MAP * ~NOTFOUND, EXCLUDE 127.0.0.1" \
+    --screenshot=/tmp/offline.png http://127.0.0.1:8000/
+  ```
 - Reach for a Bootstrap utility before writing CSS. Grid (`row`,
   `col-lg-7`), spacing (`py-4`, `mb-0`, `gap-3`), flex
   (`d-flex flex-wrap justify-content-between`), `table`, `btn`,
