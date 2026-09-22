@@ -180,6 +180,47 @@ chromium --headless --disable-gpu --hide-scrollbars \
 
 Look at the screenshot. Check 390px wide as well as desktop.
 
+## Writing
+
+The copy follows Strunk, *The Elements of Style*
+(https://www.gutenberg.org/files/37134/37134-h/37134-h.htm). The rules
+that actually bite on this page, in the order they get broken:
+
+- **Omit needless words (13).** Every word must tell. "This is the payout
+  scalability answer, so it is worth being precise about it" says nothing;
+  "Payout scalability is the problem this solves" says the same thing and
+  starts the paragraph. Cut "really", "very", "actually", "simply", "the
+  fact that", "in order to", and any sentence that only announces what the
+  next sentence will do.
+- **Avoid a succession of loose sentences (14).** The natural draft here
+  is three clauses strung with "and", because the subject invites it. Two
+  sentences almost always read better than one with two "and"s in it.
+- **Use the active voice (10).** "The PPLNS window is recomputed locally"
+  became "Each node recomputes the PPLNS window". Name the actor: a node,
+  a miner, a market maker, the pool.
+- **Put statements in positive form (11).** "The money never sits in an
+  account somebody else controls" became "the payment goes straight to a
+  key you hold". Keep the negative only where the denial is the point, as
+  in "not ready for your mainnet hashrate".
+- **Definite, specific, concrete language (12).** "That output is the
+  thing you can sell" is vague; say what it is and what happens to it.
+  Numbers beat adjectives: 8.57:1, 30 kB, 1.3 Mbps, three uncles.
+- **Place the emphatic words at the end (18).** The paragraph on pressure
+  ends on "It stops counting your shares" because that is the point of it.
+- **Express co-ordinate ideas in similar form (15).** The chain figure's
+  three legend entries all read "A thing: what it is". Lists of parallel
+  items get parallel grammar.
+- **Begin each paragraph with a topic sentence (9).** One topic to a
+  paragraph.
+- **Serial comma (2).** "bitcoind, the node, and a Lightning node."
+- **Do not join independent clauses by a comma (5).** "A pool operator is
+  a company in a jurisdiction, and companies can be leaned on", not a
+  comma splice.
+
+None of this licenses shortening the page by dropping substance. Strunk's
+own gloss: "This requires not that the writer make all his sentences
+short, or that he avoid all detail, but that every word tell."
+
 ## House rules
 
 - Plain HTML and CSS. No framework, no bundler, no npm. If something needs
@@ -213,3 +254,10 @@ order book in 144-block buckets.
 These are different models and the draft looks like the current thinking.
 The page has not been updated to it because the file is in `drafts/`. Ask
 before rewriting the trading window section.
+
+## Writing Style
+
+Remain 100% true to elements of style book by william strunk jr. You
+can find a copy here:
+https://www.gutenberg.org/files/37134/37134-h/37134-h.htm Ingest the
+style guidelines.
