@@ -1,8 +1,8 @@
 # P2Poolv2 website
 
-The landing page at the root of the P2Poolv2 project. Plain HTML and CSS,
-no build step and no dependencies beyond two webfonts served from Google
-Fonts.
+The landing page at the root of the P2Poolv2 project. Bootstrap 5.3 CSS
+from a CDN plus one small stylesheet. No build step, no npm, and no
+JavaScript.
 
 ```
 index.html      the page
@@ -28,6 +28,9 @@ compiled first.
 
 ## Conventions
 
+- Bootstrap is themed through its own CSS variables, all set in the
+  `:root` block of `styles.css`. Prefer a Bootstrap utility class over a
+  new rule.
 - Colours, type and logo come from `../logos/p2poolv2-brand-pack`: Bitcoin
   Orange `#F7931A` on black, with white as the only other mark. The pack's
   four colours are the only ones on the page, they all live in the `:root`

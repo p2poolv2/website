@@ -137,6 +137,20 @@ Rules that a change should not break:
 - Every colour literal in `styles.css` lives in the `:root` block at the
   top of the file, and nowhere else. `index.html` contains no colours at
   all: the inline SVGs inherit `fill` from CSS.
+- The palette reaches Bootstrap through Bootstrap's own variables, set
+  once in that same `:root` block: `--bs-body-bg`, `--bs-primary`,
+  `--bs-primary-rgb`, `--bs-border-color`, `--bs-link-color`,
+  `--bs-secondary-color` and the rest. Theme a component by setting its
+  `--bs-btn-*` or `--bs-table-*` variables, not by overriding Bootstrap's
+  selectors.
+- `--bs-border-radius` and its variants are all `0`. That single
+  declaration is most of what keeps the page from looking like a stock
+  Bootstrap page, along with using hairline-separated rows rather than a
+  stack of `card`s.
+- Bootstrap's default link and button colours do not know about the
+  orange contrast rule. `.btn-primary`, `.btn-outline-primary` and
+  anything else that fills with orange set `--bs-btn-color` and
+  `--bs-btn-hover-color` to black. Check any new orange-filled control.
 - Do not introduce a fifth colour. Where a shade is needed, use one of the
   four at reduced opacity and add it to `:root` as a named token
   (`--orange-26`, `--white-56`). The pack does the same thing for the faint
@@ -162,6 +176,19 @@ a dead red stylesheet and stray `fill:#00001a` inside the orange logo, two
 SVGs that are not well-formed XML, and a `palette.svg` still drawn in red.
 None of them affect this site. The geometry in `assets/logo.svg` was
 extracted from the outlines file and repaired.
+
+## Bootstrap gotchas found here
+
+- **A `.row` that carries a border needs `gx-0`.** Bootstrap rows use
+  negative horizontal margins for their gutters, so a `border-top` on a
+  row draws wider than the container and the hairline sticks out past the
+  text. The definition rows and the stat block use `gx-0` with `gy-*` for
+  vertical spacing, and `pe-lg-5` on the first column for the space that
+  the gutter would have provided.
+- **Utilities carry `!important`.** `class="band pt-5"` will not give you
+  `band`'s padding on top; the utility wins. Use one or the other.
+- **`.container` is capped at 1120px here**, narrower than Bootstrap's
+  default, so the measure stays readable on a wide screen.
 
 ## Working on it
 
@@ -223,8 +250,17 @@ short, or that he avoid all detail, but that every word tell."
 
 ## House rules
 
-- Plain HTML and CSS. No framework, no bundler, no npm. If something needs
-  JavaScript, ask first.
+- The page is built on **Bootstrap 5.3.3 CSS**, loaded from jsDelivr with
+  an SRI hash. There is no build step, no npm, and no Bootstrap
+  JavaScript: the top bar does not collapse, it hides its links with
+  `d-none d-lg-inline` instead, so the page stays CSS-only. If something
+  needs JavaScript, ask first.
+- Reach for a Bootstrap utility before writing CSS. Grid (`row`,
+  `col-lg-7`), spacing (`py-4`, `mb-0`, `gap-3`), flex
+  (`d-flex flex-wrap justify-content-between`), `table`, `btn`,
+  `list-unstyled` and `visually-hidden-focusable` are all in use. Add a
+  rule to `styles.css` only for something Bootstrap has no equivalent
+  for.
 - ASCII only in markup, styles and copy, matching the node repo's
   convention. Use HTML entities for typographic characters.
 - One animation on the page: the hero chain figure builds once on load. It

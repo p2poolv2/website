@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,15 +12,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<a class="skip" href="#main">Skip to content</a>
+<a class="visually-hidden-focusable skip-link" href="#main">Skip to content</a>
 
-<header class="topbar">
-  <div class="frame topbar-inner">
-    <a class="brand" href="#top" aria-label="P2Poolv2 home">
+<header class="navbar sticky-top topbar py-2">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2 m-0 p-0" href="#top" aria-label="P2Poolv2 home">
       <svg class="brand-mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
         <g>
           <circle cx="4.268" cy="3.679" r="1.733"></circle>
@@ -29,40 +31,37 @@
           <circle cx="5.394" cy="10.343" r="1.733"></circle>
         </g>
       </svg>
-      <span class="brand-word">p2pool<span class="brand-v2">v2</span></span>
+      <span class="brand-word">p2pool<span class="text-primary">v2</span></span>
     </a>
-    <nav class="topnav" aria-label="Sections">
-      <a href="#chain">Share chain</a>
-      <a href="#miners">Mining</a>
-      <a href="#payments">Selling shares</a>
-      <a href="#status">Status</a>
-      <a class="topnav-cta" href="#run">Run a node</a>
+    <nav class="d-flex align-items-center gap-4 topnav" aria-label="Sections">
+      <a class="d-none d-lg-inline" href="#chain">Share chain</a>
+      <a class="d-none d-lg-inline" href="#miners">Mining</a>
+      <a class="d-none d-lg-inline" href="#payments">Selling shares</a>
+      <a class="d-none d-lg-inline" href="#status">Status</a>
+      <a class="btn btn-outline-primary btn-sm" href="#run">Run a node</a>
     </nav>
   </div>
 </header>
 
 <main id="main">
 
-<section class="hero" id="top">
-  <div class="frame">
-    <h1>Mine a share.<br>Sell it for bitcoin.</h1>
-    <p class="lede">
-      
+<section class="band" id="top">
+  <div class="container">
+    <h1 class="hero-title mb-4">Mine a share.<br>Sell it for bitcoin.</h1>
+    <p class="lede mb-0">
       Every share you mine carries an output on the share chain, and it is
       yours to sell. Market makers buy those outputs for bitcoin, over
-      Lightning or over Ark, and take a coinbase slot in your place. A
-      coinbase has room for only so many miners, and that ceiling stopped
-      the original P2Pool from growing. The market is how this pool pays
-      past it. No operator keeps the books, and your money goes straight
-      to a key you hold.
-    
+      Lightning or over Ark, and take a coinbase slot in your place. A coinbase
+      has room for only so many miners, and that ceiling stopped the original
+      P2Pool from growing. The market is how this pool pays past it. No
+      operator keeps the books, and your money goes straight to a key you hold.
     </p>
-    <div class="actions">
-      <a class="btn" href="#run">Run a node</a>
-      <a class="btn btn-quiet" href="#payments">See how a share sells</a>
+    <div class="d-flex flex-wrap gap-3 mt-4">
+      <a class="btn btn-primary" href="#run">Run a node</a>
+      <a class="btn btn-outline-light" href="#payments">See how a share sells</a>
     </div>
 
-    <figure class="chainfig">
+    <figure class="chainfig mt-5 mb-0">
       <div class="chainfig-scroll">
         <svg class="dag" viewBox="0 0 900 160" role="img"
              aria-label="A share chain drawn as a directed acyclic graph: eight shares in a main chain, each pointing back to its parent, with two uncle shares hanging below and one share highlighted because it also met the bitcoin network target.">
@@ -102,70 +101,63 @@
         </svg>
       </div>
       <figcaption>
-        <ul class="legend">
+        <ul class="legend list-unstyled d-flex flex-wrap mt-4 mb-3">
           <li><span class="key key-share"></span>A share: a real bitcoin block, mined at a lower target</li>
           <li><span class="key key-won"></span>A block: the share that cleared the network target too, and paid everyone</li>
           <li><span class="key key-uncle"></span>An uncle: honest work off the main chain, paid at a discount</li>
         </ul>
-        <p>
-          
-          Shares land about every ten seconds, each pointing back at its
-          parent. Every one carries an output its miner owns. The chain,
-          the accounting, and the coinbase payouts run on testnet4 today
-          at version 0.15.3. The market is what we are building now.
-        
+        <p class="text-secondary small mb-0">
+          Shares land about every ten seconds, each pointing back at its parent.
+          Every one carries an output its miner owns. The chain, the accounting,
+          and the coinbase payouts run on testnet4 today at version 0.15.3. The
+          market is what we are building now.
         </p>
       </figcaption>
     </figure>
   </div>
 </section>
 
-<section class="band band-rule" id="control">
-  <div class="frame">
-    <h2>Whoever pays you decides what you mine</h2>
-    <div class="two">
-      <div class="two-main">
+<section class="band border-top border-primary-subtle" id="control">
+  <div class="container">
+    <h2 class="section-title mb-4">Whoever pays you decides what you mine</h2>
+    <div class="row g-4 g-lg-5">
+      <div class="col-lg-7">
         <p>
-          DATUM and Stratum V2 let a miner build their own block
-          template, and that is real progress. But both leave the
-          share accounting on a server the pool operates, and that
-          server decides what goes into the payout distribution it
-          hands back to you.
+          DATUM and Stratum V2 let a miner build their own block template, and
+          that is real progress. But both leave the share accounting on a server
+          the pool operates, and that server decides what goes into the payout
+          distribution it hands back to you.
         </p>
         <p>
-          
-          Your freedom to choose transactions is therefore worth exactly
-          what the pool will pay you for using it. A pool operator is a
-          company in a jurisdiction, and companies can be leaned on. A
-          company told which transactions it may not help confirm need not
-          reject your template, or argue with you, or announce anything at
-          all. It stops counting your shares.
-        
+          Your freedom to choose transactions is therefore worth exactly what
+          the pool will pay you for using it. A pool operator is a company in a
+          jurisdiction, and companies can be leaned on. A company told which
+          transactions it may not help confirm need not reject your template, or
+          argue with you, or announce anything at all. It stops counting your
+          shares.
         </p>
         <p>
-          
-          DATUM and Stratum V2 leave that lever in place. The accounting
-          is the lever, so the accounting is where the pressure lands.
-        
+          DATUM and Stratum V2 leave that lever in place. The accounting is the
+          lever, so the accounting is where the pressure lands.
         </p>
-        <p>
-          
-          P2Poolv2 moves the accounting to every node. Each node
-          replicates the share chain, recomputes the PPLNS window, and
-          checks the coinbase your miner works on. Drop a miner from the
-          payout and every other node sees a chain that does not add up.
-        
+        <p class="mb-0">
+          P2Poolv2 moves the accounting to every node. Each node replicates the
+          share chain, recomputes the PPLNS window, and checks the coinbase your
+          miner works on. Drop a miner from the payout and every other node sees
+          a chain that does not add up.
         </p>
       </div>
-      <blockquote class="pull">
-        <p>Governments are good at cutting off the heads of centrally controlled
-        networks like Napster, but pure P2P networks like Gnutella and Tor seem
-        to be holding their own.</p>
-        <cite>Satoshi Nakamoto</cite>
-      </blockquote>
+      <div class="col-lg-5">
+        <blockquote class="pull border-start ps-4 mb-0">
+          <p>Governments are good at cutting off the heads of centrally
+          controlled networks like Napster, but pure P2P networks like Gnutella
+          and Tor seem to be holding their own.</p>
+          <cite class="text-secondary">Satoshi Nakamoto</cite>
+        </blockquote>
+      </div>
     </div>
 
-    <table class="cmp">
+    <table class="table cmp caption-top mt-5 mb-0">
       <caption>What each stack decentralises, and what it keeps</caption>
       <thead>
         <tr><th scope="col"></th><th scope="col">DATUM / SV2</th><th scope="col">P2Poolv2</th></tr>
@@ -180,8 +172,8 @@
 </section>
 
 <section class="band" id="chain">
-  <div class="frame">
-    <h2>What we changed since the first P2Pool</h2>
+  <div class="container">
+    <h2 class="section-title mb-4">What we changed since the first P2Pool</h2>
     <p class="intro">
       The original P2Pool proved the idea and then ran into three walls:
       orphaned shares at scale, hashrate readings that made miners think it was
@@ -189,84 +181,76 @@
       specific answer here.
     </p>
 
-    <dl class="defs">
-      <div class="def">
-        <dt>A graph, not a line</dt>
-        <dd>
-          <p>
-            Shares reference up to three uncles, so work that arrives late or
-            races another share still gets paid instead of being orphaned. An
-            uncle is paid with a 10% discount, the share that references it
-            earns a 10% bonus, and each uncle can be claimed once. More miners
-            fit in the chain, and the pool&rsquo;s variance drops as they join.
-          </p>
+    <dl class="defs mt-5 mb-0">
+      <div class="row gx-0 gy-2 py-4 border-top">
+        <dt class="col-lg-4 pe-lg-5">A graph, not a line</dt>
+        <dd class="col-lg-8 mb-0">
+          Shares reference up to three uncles, so work that arrives late or
+          races another share still gets paid instead of being orphaned. An
+          uncle is paid with a 10% discount, the share that references it earns
+          a 10% bonus, and each uncle can be claimed once. More miners fit in
+          the chain, and the pool&rsquo;s variance drops as they join.
         </dd>
       </div>
-      <div class="def">
-        <dt>Vardiff for each miner</dt>
-        <dd>
-          <p>
-            P2Pool handed every rig the whole pool&rsquo;s difficulty, which
-            sampled far too slowly to report a small miner&rsquo;s hashrate
-            honestly. Our Stratum v1 server, written from scratch in Rust, runs per-miner vardiff at a three-second target, the same as CKPool. Your
-            local dashboard shows your rigs; a separate dashboard shows the whole
-            chain.
-          </p>
+      <div class="row gx-0 gy-2 py-4 border-top">
+        <dt class="col-lg-4 pe-lg-5">Vardiff for each miner</dt>
+        <dd class="col-lg-8 mb-0">
+          P2Pool handed every rig the whole pool&rsquo;s difficulty, which
+          sampled far too slowly to report a small miner&rsquo;s hashrate
+          honestly. Our Stratum v1 server, written from scratch in Rust, runs
+          per-miner vardiff at a three-second target, the same as CKPool. Your
+          local dashboard shows your rigs; a separate dashboard shows the whole
+          chain.
         </dd>
       </div>
-      <div class="def">
-        <dt>Shares that carry Script</dt>
-        <dd>
-          <p>
-            The share chain has its own UTXOs and its own Script, built on
-            rust-bitcoin. Every share has a share-chain coinbase paying one
-            output to an address you control. 
-            You sell that output, and because it is a real UTXO under a
-            real script, the sale settles atomically instead of on a
-            promise.
-          
-          </p>
+      <div class="row gx-0 gy-2 py-4 border-top">
+        <dt class="col-lg-4 pe-lg-5">Shares that carry Script</dt>
+        <dd class="col-lg-8 mb-0">
+          The share chain has its own UTXOs and its own Script, built on
+          rust-bitcoin. Every share has a share-chain coinbase paying one output
+          to an address you control. You sell that output, and because it is a
+          real UTXO under a real script, the sale settles atomically instead of
+          on a promise.
         </dd>
       </div>
-      <div class="def">
-        <dt>Compact blocks on the wire</dt>
-        <dd>
-          <p>
-            A share is a compact block of roughly 30 kB rather than a full
-            block. At five shares every ten seconds, a node relays the chain on
-            about 1.3 Mbps instead of 176 Mbps. Home connections can carry a
-            full node.
-          </p>
+      <div class="row gx-0 gy-2 py-4 border-top border-bottom">
+        <dt class="col-lg-4 pe-lg-5">Compact blocks on the wire</dt>
+        <dd class="col-lg-8 mb-0">
+          A share is a compact block of roughly 30 kB rather than a full block.
+          At five shares every ten seconds, a node relays the chain on about
+          1.3 Mbps instead of 176 Mbps. Home connections can carry a full node.
         </dd>
       </div>
     </dl>
   </div>
 </section>
 
-<section class="band band-rule" id="miners">
-  <div class="frame">
-    <h2>If you mine</h2>
+<section class="band border-top border-primary-subtle" id="miners">
+  <div class="container">
+    <h2 class="section-title mb-4">If you mine</h2>
 
-    <div class="stat">
-      <p class="stat-value">99.9999996%</p>
-      <p class="stat-note">
-        Chance that two S19 Pros find at least one share within a single
-        two-week difficulty period, counting uncles. Without uncles it is 99.2%.
-        The model assumes P2Poolv2 holds 1% of network hashrate and a share
-        every ten seconds.
-        <a href="https://github.com/p2poolv2/p2poolv2/wiki/Shares-For-Small-Miners">See the working</a>
-      </p>
+    <div class="row stat align-items-baseline gx-0 gy-3 py-4 mb-4">
+      <div class="col-lg-auto pe-lg-5">
+        <p class="stat-value mb-0">99.9999996%</p>
+      </div>
+      <div class="col-lg">
+        <p class="stat-note text-secondary mb-0">
+          Chance that two S19 Pros find at least one share within a single
+          two-week difficulty period, counting uncles. Without uncles it is
+          99.2%. The model assumes P2Poolv2 holds 1% of network hashrate and a
+          share every ten seconds.
+          <a href="https://github.com/p2poolv2/p2poolv2/wiki/Shares-For-Small-Miners">See the working</a>
+        </p>
+      </div>
     </div>
 
     <p class="intro">
-      
-      That number answers the only question a small miner has: will I ever
-      land a share here? Land one share in a retarget window and you have
-      something to sell, and proof that the pool pays what it owes.
-    
+      That number answers the only question a small miner has: will I ever land
+      a share here? Land one share in a retarget window and you have something
+      to sell, and proof that the pool pays what it owes.
     </p>
 
-    <ul class="plain">
+    <ul class="plain list-unstyled mt-4 mb-0">
       <li>
         <strong>Run your own node, or use someone else&rsquo;s.</strong>
         A private node in front of your own farm keeps your work and your
@@ -276,11 +260,10 @@
       <li>
         <strong>You get paid one of two ways.</strong>
         If your share of the work puts you among the top N miners for a block,
-        your payout is an output in that block&rsquo;s coinbase. 
-        If it does not, and for most miners it will not, you sell your
-        share-chain outputs to a market maker for bitcoin instead. Either
-        way the payment goes straight to a key you hold.
-      
+        your payout is an output in that block&rsquo;s coinbase. If it does not,
+        and for most miners it will not, you sell your share-chain outputs to a
+        market maker for bitcoin instead. Either way the payment goes straight
+        to a key you hold.
       </li>
       <li>
         <strong>Bring two addresses.</strong>
@@ -307,93 +290,82 @@
 </section>
 
 <section class="band" id="payments">
-  <div class="frame">
-    <h2>How a share becomes bitcoin</h2>
+  <div class="container">
+    <h2 class="section-title mb-4">How a share becomes bitcoin</h2>
     <p class="intro">
-      
-      Payout scalability is the problem this solves. Bitmain&rsquo;s
-      firmware caps how many outputs a coinbase transaction may carry,
-      which capped how many miners the original P2Pool could pay, and so
-      capped the variance it could absorb. Paying every miner from the
-      coinbase does not scale. Paying a handful of buyers does.
-    
+      Payout scalability is the problem this solves. Bitmain&rsquo;s firmware
+      caps how many outputs a coinbase transaction may carry, which capped how
+      many miners the original P2Pool could pay, and so capped the variance it
+      could absorb. Paying every miner from the coinbase does not scale. Paying
+      a handful of buyers does.
     </p>
     <p class="intro">
-      
-      So P2Poolv2 pays the top N miners from the coinbase and gives every
-      other miner a share-chain output instead. Market makers buy those
-      outputs for bitcoin and take the coinbase slot the seller would have
-      had. Ten to fifty buyers can settle a pool of any size, so miner
-      count stops depending on transaction size.
-    
+      So P2Poolv2 pays the top N miners from the coinbase and gives every other
+      miner a share-chain output instead. Market makers buy those outputs for
+      bitcoin and take the coinbase slot the seller would have had. Ten to fifty
+      buyers can settle a pool of any size, so miner count stops depending on
+      transaction size.
     </p>
     <p class="intro">
-      
-      The trade is an HTLC on the share chain against a payment on
-      bitcoin, both locked to the same payment hash. Paying reveals the
-      preimage, and the preimage releases the shares. The two halves
-      succeed together or fail together, so neither side need trust the
-      other.
-    
+      The trade is an HTLC on the share chain against a payment on bitcoin, both
+      locked to the same payment hash. Paying reveals the preimage, and the
+      preimage releases the shares. The two halves succeed together or fail
+      together, so neither side need trust the other.
     </p>
     <p class="intro">
-      
-      That bitcoin half can be a Lightning invoice or an Ark VHTLC. Both
-      settle in seconds and both carry the same hash lock, so the share
-      chain sees the same swap either way. Ark suits a small miner better.
-      Receiving over Lightning means holding inbound liquidity, and a home
-      miner who sells a few shares a fortnight has no reason to keep a
-      channel funded. Adaptor signatures remain a third option.
-    
+      That bitcoin half can be a Lightning invoice or an Ark VHTLC. Both settle
+      in seconds and both carry the same hash lock, so the share chain sees the
+      same swap either way. Ark suits a small miner better. Receiving over
+      Lightning means holding inbound liquidity, and a home miner who sells a
+      few shares a fortnight has no reason to keep a channel funded. Adaptor
+      signatures remain a third option.
     </p>
 
-    <ol class="swap">
-      <li>
-        <h3>Alice sets the lock</h3>
-        <p>The miner picks a 32-byte preimage and asks to be paid under its
-        hash: a BOLT11 or BOLT12 invoice on Lightning, or a VHTLC on Ark.</p>
+    <ol class="swap list-unstyled row row-cols-1 row-cols-sm-2 row-cols-lg-5 g-0 border my-5">
+      <li class="col">
+        <h3 class="swap-title">Alice sets the lock</h3>
+        <p class="mb-0">The miner picks a 32-byte preimage and asks to be paid
+        under its hash: a BOLT11 or BOLT12 invoice on Lightning, or a VHTLC on
+        Ark.</p>
       </li>
-      <li>
-        <h3>Alice locks her shares</h3>
-        <p>She locks her share-chain outputs in an HTLC under the same payment
-        hash, so only the preimage releases them.</p>
+      <li class="col">
+        <h3 class="swap-title">Alice locks her shares</h3>
+        <p class="mb-0">She locks her share-chain outputs in an HTLC under the
+        same payment hash, so only the preimage releases them.</p>
       </li>
-      <li>
-        <h3>Bob checks both sides</h3>
-        <p>The market maker confirms the share HTLC is final and that the hash
-        in it matches the hash he is being asked to pay under.</p>
+      <li class="col">
+        <h3 class="swap-title">Bob checks both sides</h3>
+        <p class="mb-0">The market maker confirms the share HTLC is final and
+        that the hash in it matches the hash he is being asked to pay under.</p>
       </li>
-      <li>
-        <h3>Bob pays</h3>
-        <p>Settling on either rail reveals the preimage to him. That is the
-        whole trick: paying is what unlocks the shares.</p>
+      <li class="col">
+        <h3 class="swap-title">Bob pays</h3>
+        <p class="mb-0">Settling on either rail reveals the preimage to him.
+        That is the whole trick: paying is what unlocks the shares.</p>
       </li>
-      <li>
-        <h3>Bob claims the shares</h3>
-        <p>He spends the HTLC on the share chain with the preimage. If he never
-        pays, Alice refunds herself after the timeout, or they both sign an
-        instant refund.</p>
+      <li class="col">
+        <h3 class="swap-title">Bob claims the shares</h3>
+        <p class="mb-0">He spends the HTLC on the share chain with the preimage.
+        If he never pays, Alice refunds herself after the timeout, or they both
+        sign an instant refund.</p>
       </li>
     </ol>
 
-    <div class="two">
-      <div class="two-main">
+    <div class="row g-4 g-lg-5">
+      <div class="col-lg-7">
         <h3 class="sub">The trading window</h3>
-        <p>
-          
-          A share-chain coinbase matures after about a day of share
-          blocks, for the reason bitcoin makes you wait: it stops a miner
-          selling shares and then reorganising them away. The window
-          closes when the PPLNS window moves past that depth, because the
-          share stops counting toward the next payout. Between those two
-          edges the output is tradable, which makes it a short-dated
-          hashrate contract.
-        
+        <p class="mb-0">
+          A share-chain coinbase matures after about a day of share blocks, for
+          the reason bitcoin makes you wait: it stops a miner selling shares and
+          then reorganising them away. The window closes when the PPLNS window
+          moves past that depth, because the share stops counting toward the
+          next payout. Between those two edges the output is tradable, which
+          makes it a short-dated hashrate contract.
         </p>
       </div>
-      <div class="two-side">
+      <div class="col-lg-5">
         <h3 class="sub">Read the protocol</h3>
-        <ul class="plain plain-tight">
+        <ul class="plain plain-tight list-unstyled mb-0">
           <li><a href="https://github.com/p2poolv2/p2poolv2/blob/main/docs/atomic-swap/p2pool-2-lightinig-example.md">Swap walkthrough, end to end, over Lightning</a></li>
           <li><a href="https://github.com/p2poolv2/p2poolv2/blob/main/docs/atomic-swap/htlc_scripts.md">HTLC scripts, P2WSH and P2TR</a></li>
           <li><a href="https://github.com/p2poolv2/p2poolv2/wiki/Payout-mechanism---Trading-Shares-For-Bitcoin">Payout mechanism and trading windows</a></li>
@@ -403,21 +375,18 @@
   </div>
 </section>
 
-<section class="band band-rule" id="run">
-  <div class="frame">
-    <h2>Run a node</h2>
+<section class="band border-top border-primary-subtle" id="run">
+  <div class="container">
+    <h2 class="section-title mb-4">Run a node</h2>
     <p class="intro">
-      
-      You need a bitcoin node the P2Poolv2 node can talk to, and Rust. Use
-      the docker signet if you would rather not point anything real at it
-      yet.
-    
+      You need a bitcoin node the P2Poolv2 node can talk to, and Rust. Use the
+      docker signet if you would rather not point anything real at it yet.
     </p>
 
-    <div class="two">
-      <div class="two-main">
+    <div class="row g-4 g-lg-5">
+      <div class="col-lg-7">
         <div class="term" aria-label="Terminal commands to build and run a node">
-<pre><code><span class="c"># build and run against your own bitcoind</span>
+<pre class="mb-0"><code><span class="c"># build and run against your own bitcoind</span>
 <span class="p">$</span> git clone https://github.com/p2poolv2/p2poolv2
 <span class="p">$</span> cd p2poolv2
 <span class="p">$</span> just run
@@ -427,20 +396,19 @@
 <span class="p">$</span> ./run-p2pool.sh signet bitcoind</code></pre>
         </div>
         <div class="term" aria-label="Example miner configuration">
-<pre><code><span class="c"># point a rig at the node</span>
+<pre class="mb-0"><code><span class="c"># point a rig at the node</span>
 url      stratum+tcp://&lt;your-node&gt;:3333
 user     &lt;your bitcoin address&gt;
 password p2p=&lt;your p2pool address&gt;</code></pre>
         </div>
-        <p class="note">
+        <p class="text-secondary small mb-0">
           Share addresses are bech32m: <code>p2pool1</code> on mainnet,
-          <code>tp2pool1</code> on testnet4, and <code>sp2pool1</code> on
-          signet.
+          <code>tp2pool1</code> on testnet4, and <code>sp2pool1</code> on signet.
         </p>
       </div>
-      <div class="two-side">
+      <div class="col-lg-5">
         <h3 class="sub">Before you start</h3>
-        <ul class="plain plain-tight">
+        <ul class="plain plain-tight list-unstyled mb-0">
           <li>Rust 1.88 or newer, edition 2024.</li>
           <li>RocksDB installed system-wide keeps build times down.</li>
           <li><a href="https://github.com/p2poolv2/p2poolv2/wiki/Developer-Setup-Notes">Developer setup notes</a></li>
@@ -453,16 +421,16 @@ password p2p=&lt;your p2pool address&gt;</code></pre>
 </section>
 
 <section class="band" id="status">
-  <div class="frame">
-    <h2>Where the code is today</h2>
+  <div class="container">
+    <h2 class="section-title mb-4">Where the code is today</h2>
     <p class="intro">
       P2Poolv2 runs on testnet4 and signet. It is not ready for your mainnet
       hashrate, and we would rather say so than collect it.
     </p>
-    <div class="two">
-      <div class="two-main">
+    <div class="row g-4 g-lg-5">
+      <div class="col-lg-7">
         <h3 class="sub">Working now</h3>
-        <ul class="plain plain-tight">
+        <ul class="plain plain-tight list-unstyled mb-0">
           <li>Private and public nodes, with the share chain replicating between them</li>
           <li>Stratum v1 server with per-miner vardiff</li>
           <li>PPLNS accounting and payouts built into the coinbase</li>
@@ -470,9 +438,9 @@ password p2p=&lt;your p2pool address&gt;</code></pre>
           <li>A block explorer over the share chain, on the CLI and the dashboard</li>
         </ul>
       </div>
-      <div class="two-side">
+      <div class="col-lg-5">
         <h3 class="sub">Being built</h3>
-        <ul class="plain plain-tight">
+        <ul class="plain plain-tight list-unstyled mb-0">
           <li>Share trading: the HTLC scripts, and the swap flow over Lightning and Ark</li>
           <li>A terminal app to drive bitcoind, the node, and a Lightning node together</li>
           <li>The testnet4 fork that resets difficulty so a few Bitaxes can keep the chain moving</li>
@@ -480,7 +448,7 @@ password p2p=&lt;your p2pool address&gt;</code></pre>
         </ul>
       </div>
     </div>
-    <p class="cta-line">
+    <p class="cta-line mt-5 mb-0">
       Come argue with the design in
       <a href="https://matrix.to/#/#p2poolv2:matrix.org">Matrix</a>,
       or take something off the
@@ -491,17 +459,17 @@ password p2p=&lt;your p2pool address&gt;</code></pre>
 
 </main>
 
-<footer class="foot">
-  <div class="frame foot-inner">
+<footer class="foot border-top border-primary-subtle py-5">
+  <div class="container d-flex flex-wrap justify-content-between gap-4">
     <div class="foot-brand">
       <svg class="lockup" viewBox="20 100 1010 360" role="img" aria-label="P2Poolv2">
         <g class="lockup-mesh"><path d="M37.7,225.8 L160.1,148.1" class="edge"/><path d="M327.7,392.7 L546.8,123.3" class="edge"/><path d="M160.1,148.1 L917.5,299.2" class="edge"/><path d="M546.8,123.3 L537.6,315.8" class="edge"/><path d="M955.8,253.1 L943.3,242.9" class="edge"/><path d="M52.3,299.7 L37.2,301.1" class="edge"/><path d="M123.6,387.9 L71.9,338.3" class="edge"/><path d="M448.7,119.8 L546.8,123.3" class="edge"/><path d="M37.7,225.8 L37.2,301.1" class="edge"/><path d="M520.6,448.8 L434.1,404.3" class="edge"/><path d="M37.7,225.8 L955.8,253.1" class="edge"/><path d="M892.1,232.9 L943.3,242.9" class="edge"/><path d="M968.6,205.9 L955.8,253.1" class="edge"/><path d="M160.1,148.1 L328.4,189.0" class="edge"/><path d="M51.0,301.3 L52.3,299.7" class="edge"/><path d="M169.1,394.5 L71.9,338.3" class="edge"/><path d="M51.0,301.3 L520.6,448.8" class="edge"/><path d="M434.1,404.3 L546.8,123.3" class="edge"/><path d="M434.1,404.3 L327.7,392.7" class="edge"/><path d="M51.0,301.3 L71.9,338.3" class="edge"/><path d="M123.6,387.9 L917.5,299.2" class="edge"/><path d="M551.5,390.3 L649.2,445.6" class="edge"/><path d="M932.3,263.0 L955.8,253.1" class="edge"/><path d="M448.7,119.8 L649.2,445.6" class="edge"/><path d="M892.1,232.9 L52.3,299.7" class="edge"/><path d="M520.6,448.8 L649.2,445.6" class="edge"/><path d="M520.6,448.8 L537.6,315.8" class="edge"/><path d="M551.5,390.3 L537.6,315.8" class="edge"/><path d="M892.1,232.9 L328.4,189.0" class="edge"/><path d="M39.4,364.6 L71.9,338.3" class="edge"/><path d="M51.0,301.3 L37.2,301.1" class="edge"/><path d="M932.3,263.0 L917.5,299.2" class="edge"/><path d="M169.1,394.5 L434.1,404.3" class="edge"/><path d="M955.8,253.1 L434.1,404.3" class="edge"/><path d="M968.6,205.9 L943.3,242.9" class="edge"/><path d="M123.6,387.9 L169.1,394.5" class="edge"/><path d="M836.2,413.4 L899.8,312.2" class="edge"/><path d="M169.1,394.5 L327.7,392.7" class="edge"/><path d="M968.6,205.9 L537.6,315.8" class="edge"/><path d="M836.2,413.4 L448.7,119.8" class="edge"/><path d="M836.2,413.4 L917.5,299.2" class="edge"/><path d="M932.3,263.0 L892.1,232.9" class="edge"/><path d="M932.3,263.0 L448.7,119.8" class="edge"/><path d="M899.8,312.2 L917.5,299.2" class="edge"/><path d="M932.3,263.0 L899.8,312.2" class="edge"/><path d="M37.2,301.1 L39.4,364.6" class="edge"/><path d="M551.5,390.3 L520.6,448.8" class="edge"/><path d="M448.7,119.8 L328.4,189.0" class="edge"/><path d="M37.7,225.8 L52.3,299.7" class="edge"/><path d="M649.2,445.6 L434.1,404.3" class="edge"/><path d="M932.3,263.0 L943.3,242.9" class="edge"/><circle cx="123.6" cy="387.9" r="10" class="node"/><circle cx="932.3" cy="263.0" r="10" class="node"/><circle cx="551.5" cy="390.3" r="10" class="node"/><circle cx="169.1" cy="394.5" r="10" class="node"/><circle cx="968.6" cy="205.9" r="10" class="node"/><circle cx="51.0" cy="301.3" r="10" class="node"/><circle cx="37.7" cy="225.8" r="10" class="node"/><circle cx="892.1" cy="232.9" r="10" class="node"/><circle cx="836.2" cy="413.4" r="10" class="node"/><circle cx="52.3" cy="299.7" r="10" class="node"/><circle cx="899.8" cy="312.2" r="10" class="node"/><circle cx="37.2" cy="301.1" r="10" class="node"/><circle cx="160.1" cy="148.1" r="10" class="node"/><circle cx="448.7" cy="119.8" r="10" class="node"/><circle cx="955.8" cy="253.1" r="10" class="node"/><circle cx="520.6" cy="448.8" r="10" class="node"/><circle cx="649.2" cy="445.6" r="10" class="node"/><circle cx="434.1" cy="404.3" r="10" class="node"/><circle cx="39.4" cy="364.6" r="10" class="node"/><circle cx="917.5" cy="299.2" r="10" class="node"/><circle cx="327.7" cy="392.7" r="10" class="node"/><circle cx="328.4" cy="189.0" r="10" class="node"/><circle cx="943.3" cy="242.9" r="10" class="node"/><circle cx="546.8" cy="123.3" r="10" class="node"/><circle cx="71.9" cy="338.3" r="10" class="node"/><circle cx="537.6" cy="315.8" r="10" class="node"/><circle cx="434.1" cy="404.3" r="14" class="ring"/><circle cx="434.1" cy="404.3" r="24" class="ring"/><circle cx="551.5" cy="390.3" r="14" class="ring"/><circle cx="551.5" cy="390.3" r="24" class="ring"/><circle cx="327.7" cy="392.7" r="14" class="ring"/><circle cx="520.6" cy="448.8" r="14" class="ring"/><circle cx="51.0" cy="301.3" r="14" class="ring"/><circle cx="51.0" cy="301.3" r="24" class="ring"/><circle cx="649.2" cy="445.6" r="14" class="ring"/><circle cx="649.2" cy="445.6" r="24" class="ring"/><circle cx="123.6" cy="387.9" r="14" class="ring"/></g>
         <text x="120" y="355" font-weight="800" font-size="190" letter-spacing="-8">p2pool</text>
         <text x="840" y="385" font-weight="800" font-size="110" letter-spacing="-8">v2</text>
       </svg>
-      <p>Rebooted for bitcoin. MIT or Apache-2.0.</p>
+      <p class="text-secondary small mt-2 mb-0">Rebooted for bitcoin. MIT or Apache-2.0.</p>
     </div>
-    <nav class="foot-nav" aria-label="Project links">
+    <nav class="foot-nav d-flex flex-wrap gap-4" aria-label="Project links">
       <a href="https://github.com/p2poolv2/p2poolv2">Source</a>
       <a href="https://github.com/p2poolv2/p2poolv2/wiki">Wiki</a>
       <a href="https://github.com/orgs/p2poolv2/projects/1">Project board</a>
