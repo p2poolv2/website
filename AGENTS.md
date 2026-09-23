@@ -382,23 +382,20 @@ short, or that he avoid all detail, but that every word tell."
 
 ## House rules
 
-- The page is built on **Bootstrap 5.3.3 CSS**, vendored at
-  `assets/bootstrap.min.css`. There is no build step, no npm, and no
-  Bootstrap JavaScript: the top bar does not collapse, it hides its links
-  with `d-none d-md-inline` instead, so the page stays CSS-only. If
-  something needs JavaScript, ask first.
+- The page is built on **Bootstrap 5.3.3**, CSS and the JS bundle, both
+  vendored at `assets/bootstrap.min.css` and
+  `assets/bootstrap.bundle.min.js`. There is no build step and no npm.
+  The JS is there for one thing, the navbar collapse; if something else
+  needs JavaScript, ask first.
 - **The nav breakpoint is `md` (768px), and that number was measured.**
   The full bar, four links plus the live indicator plus the button, fits
-  at 768px with room to spare and does not fit at 576px. It was briefly
-  `lg` (992px), which hid the links on tablets and small laptop windows
-  for no reason. If a link is added or renamed, re-check 768px before
-  assuming it still fits.
-- Below 768px only the live indicator and the CTA remain, and the live
-  indicator drops to just "live". Nothing is unreachable: every nav
-  target is a section of this one page, so scrolling gets there. If the
-  links are ever wanted on phones, use a CSS-only disclosure
-  (`details`/`summary`) rather than Bootstrap's collapse, which would
-  pull in the JavaScript bundle.
+  inline at 768px with room to spare and does not fit at 576px. If a link
+  is added or renamed, re-check 768px before assuming it still fits.
+- Below 768px the links, the live indicator and the CTA all move into a
+  `navbar-collapse` behind a toggler, so everything in the nav stays
+  reachable on a phone. The toggler icon is a background SVG in
+  `--bs-navbar-toggler-icon-bg`, so recolouring it means replacing that
+  data URI, not setting a `fill`.
 - **Nothing loads from a third party.** No CDN, no Google Fonts, no
   analytics. Adding an external `<link>`, `<script>` or `@import` is a
   change of policy, not a detail: it puts visitor IPs in someone else's

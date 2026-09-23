@@ -25,22 +25,29 @@
 
 <a class="visually-hidden-focusable skip-link" href="#main">Skip to content</a>
 
-<header class="navbar sticky-top topbar py-2">
+<header class="navbar navbar-expand-md sticky-top topbar py-2">
   <div class="container">
     <a class="navbar-brand d-block m-0 p-0" href="#top" aria-label="P2Poolv2 home">
       <img class="brand-logo" src="assets/logo.png" width="760" height="380" alt="P2Poolv2">
     </a>
-    <nav class="d-flex align-items-center gap-4 topnav" aria-label="Sections">
-      <a class="d-none d-md-inline" href="#chain">Share chain</a>
-      <a class="d-none d-md-inline" href="#miners">Mining</a>
-      <a class="d-none d-md-inline" href="#payments">Selling shares</a>
-      <a class="d-none d-md-inline" href="#status">Status</a>
-      <a class="live d-inline-flex align-items-center gap-2"
-         href="https://testnet4.p2poolv2.org">
-        <span class="live-dot" aria-hidden="true"></span>
-        <span><span class="d-none d-sm-inline">Testnet4 </span>live</span></a>
-      <a class="btn btn-outline-primary btn-sm" href="#run">Run a node</a>
-    </nav>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#topnav" aria-controls="topnav" aria-expanded="false"
+            aria-label="Show navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="topnav">
+      <nav class="navbar-nav ms-auto align-items-md-center gap-md-4 topnav"
+           aria-label="Sections">
+        <a class="nav-link" href="#chain">Share chain</a>
+        <a class="nav-link" href="#miners">Mining</a>
+        <a class="nav-link" href="#payments">Selling shares</a>
+        <a class="nav-link" href="#status">Status</a>
+        <a class="live nav-link d-inline-flex align-items-center gap-2"
+           href="https://testnet4.p2poolv2.org">
+          <span class="live-dot" aria-hidden="true"></span>Testnet4 live</a>
+        <a class="btn btn-outline-primary btn-sm mt-2 mt-md-0" href="#run">Run a node</a>
+      </nav>
+    </div>
   </div>
 </header>
 
@@ -484,5 +491,6 @@ password p2p=&lt;your p2pool address&gt;</code></pre>
   </div>
 </footer>
 
+<script src="assets/bootstrap.bundle.min.js"></script>
 </body>
 </html>

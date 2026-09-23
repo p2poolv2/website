@@ -243,12 +243,39 @@ p {
 }
 
 .topnav a:not(.btn) {
+  --bs-nav-link-padding-x: 0;
+  --bs-nav-link-padding-y: 0.45rem;
   color: var(--bs-secondary-color);
   text-decoration: none;
 }
 
-.topnav a:not(.btn):hover {
+.topnav a:not(.btn):hover,
+.topnav a:not(.btn):focus {
   color: var(--p2-white);
+}
+
+/* The toggler. Bootstrap draws its icon as a background SVG in
+   --bs-navbar-toggler-icon-bg, so recolouring means replacing that data
+   URI rather than setting a fill. */
+.navbar-toggler {
+  --bs-navbar-toggler-border-color: var(--bs-border-color);
+  --bs-navbar-toggler-focus-width: 0.2rem;
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23f7931a' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  padding: 0.35rem 0.55rem;
+}
+
+/* The open menu on phones: give it room off the bar and rule it off from
+   the page behind, which is translucent. */
+@media (max-width: 767.98px) {
+  .navbar-collapse {
+    padding: 0.5rem 0 0.75rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--bs-border-color);
+  }
+
+  .topnav .btn {
+    align-self: flex-start;
+  }
 }
 
 /* ---------------------------------------------------------------

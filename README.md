@@ -1,14 +1,16 @@
 # P2Poolv2 website
 
 The landing page at the root of the P2Poolv2 project. Bootstrap 5.3 CSS
-plus one small stylesheet. No build step, no npm, no JavaScript, and
-nothing loaded from a third party: the page renders with the network
-down.
+plus one small stylesheet. No build step and no npm, and nothing loaded
+from a third party: the page renders with the network down. The only
+JavaScript is Bootstrap's own bundle, vendored, used for the navbar
+collapse.
 
 ```
 index.html                 the page
 styles.css                 the theme, the type scale, and the bespoke bits
-assets/bootstrap.min.css   Bootstrap 5.3.3, vendored
+assets/bootstrap.min.css   Bootstrap 5.3.3 CSS, vendored
+assets/bootstrap.bundle.min.js  Bootstrap 5.3.3 JS, vendored, for the navbar
 assets/fonts.css           generated @font-face rules, do not hand-edit
 assets/fonts/              Inter and JetBrains Mono woff2, plus licences
 assets/logo.png            the brand-pack lockup, used in the footer
