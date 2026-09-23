@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>P2Poolv2 &mdash; permissionless mining, auditable accounting, self-custodial payouts</title>
-<meta name="description" content="P2Poolv2 is a permissionless peer-to-peer bitcoin mining pool. It checks your work, not your identity. Every node audits the share accounting, and payouts are self-custodied, arriving on a key you hold. Running on testnet4.">
+<meta name="description" content="P2Poolv2 is a permissionless peer-to-peer bitcoin mining pool. It checks your work, not your identity. Every node audits the share accounting, and payouts are self-custodial, arriving on a key you hold. Running on testnet4.">
 <link rel="canonical" href="https://p2poolv2.org/">
 <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
-<meta property="og:title" content="P2Poolv2 - permissionless mining, auditable accounting, self-custodied payouts">
-<meta property="og:description" content="Permissionless mining: the pool checks your work, not your identity. Auditable accounting: every node replays every share. Self-custodied payouts: they arrive on a key you hold. Running on testnet4.">
+<meta property="og:title" content="P2Poolv2 - permissionless mining, auditable accounting, self-custodial payouts">
+<meta property="og:description" content="Permissionless mining: the pool checks your work, not your identity. Auditable accounting: every node replays every share. Self-custodial payouts: they arrive on a key you hold. Running on testnet4.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://p2poolv2.org/">
 <meta property="og:image" content="https://p2poolv2.org/assets/og.png">
@@ -55,15 +55,27 @@
 
 <section class="band" id="top">
   <div class="container">
-    <h1 class="hero-title mb-4">Mining without centralised operators</h1>
-    <p class="lede mb-0">
-      P2Poolv2 replaces pool operators with miners. All nodes keep
-      books, so accounting is always audited.  Payouts are managed via
-      nakamoto consensus, so all nodes validate they are paid out
-      correctly. No coordinator takes custody of your mining rewards. They
-      arrive as an output in the block&rsquo;s coinbase, or as bitcoin
-      from selling your shares, to a key you hold.
-    </p>
+    <h1 class="hero-title mb-4">Permissionless mining.<br>Continuously audited.<br>Self-custodial payouts.</h1>
+    <div class="props row row-cols-1 row-cols-md-3 g-0 border mt-4 mb-0">
+      <div class="col prop">
+        <p class="sub mb-2">Permissionless</p>
+        <p class="prop-body mb-0">Mine what you want. The pool can't
+        deny you payouts for your work done or keep you from mining
+        transactions of your choice.</p>
+      </div>
+      <div class="col prop">
+        <p class="sub mb-2">Continuously audited</p>
+        <p class="prop-body mb-0">Every node keeps the accounts and reaches
+        consensus on them, so all nodes are always checking that everyone is
+        paid correctly.</p>
+      </div>
+      <div class="col prop">
+        <p class="sub mb-2">Self-custodial payouts</p>
+        <p class="prop-body mb-0">Rewards arrive in the block&rsquo;s
+        coinbase, or as bitcoin from selling your shares, always directly to a key you
+        hold.</p>
+      </div>
+    </div>
     <div class="d-flex flex-wrap gap-3 mt-4">
       <a class="btn btn-primary" href="#run">Run a node</a>
       <a class="btn btn-outline-light" href="https://testnet4.p2poolv2.org">See the live chain</a>

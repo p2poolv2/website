@@ -68,10 +68,16 @@ In the source repo (`../p2pool-v2`):
   |---|---|---|
   | permission | permissionless; it checks your work, not your identity | no account, no operator to approve you |
   | accounting | auditable; verifiable; every node replays every share | no company keeps the books |
-  | custody | self-custodied; it arrives on a key you hold | the pool never touches it, no custodian |
+  | custody | self-custodial; it arrives on a key you hold | the pool never touches it, no custodian |
 
   The headline names the three properties directly. That is the hero and
   it should stay the hero.
+  Below the headline, three boxes expand the three properties, one each,
+  in the same order. They are a single bordered frame split by hairlines
+  (the swap-strip construction, class `.prop`), not free-floating cards,
+  and they carry no numbers because the three are parallel, not a
+  sequence. Each box's orange label is a `.sub`. Keep box order and the
+  headline order in step.
 - The market is the second idea, not the first. The work you mine is an
   asset you sell for bitcoin, and that market is P2Poolv2's answer to
   payout scalability: firmware caps how many outputs a coinbase can
@@ -357,7 +363,7 @@ that actually bite on this page, in the order they get broken:
   that every selling point is an absence: no operator, no account, no
   custodian, no permission. Stacking those reads as evasion. Name the
   property instead, which is what "permissionless", "auditable" and
-  "self-custodied" are for; the table under "Things on the page that
+  "self-custodial" are for; the table under "Things on the page that
   must stay true" has the mapping. Keep the negative where the denial is
   the point, as in "not ready for your mainnet hashrate", and in the
   section on pressure, where the antithesis is the argument.
