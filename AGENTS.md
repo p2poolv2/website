@@ -312,14 +312,38 @@ the artwork, so neither can be fixed in CSS. In practice this means:
 ## Deploying
 
 The page is served at `https://p2poolv2.org/`, which is set in the
-`canonical` link and in `og:url`. Copy the directory to the host; nothing
-is compiled.
+`canonical` link and in `og:url`. Deploy with the Ansible playbook, which
+the README documents:
 
-**Before the first deploy**, note that the apex currently redirects
-elsewhere. As of this writing `https://p2poolv2.org` answers 302 to
-`https://testnet4.p2poolv2.org/dashboard`, so the landing page will not
-be reachable until that redirect is removed. The explorer stays on its
-own subdomain, which is what the page links to.
+```
+cd ansible
+ansible-playbook deploy.yml --check   # dry run
+ansible-playbook deploy.yml
+```
+
+The playbook pulls `main` into `~/website` on the host and rsyncs
+`index.html`, `styles.css` and `assets/` into `/var/www/p2poolv2.org`.
+It deploys what is on GitHub, so push first. It then fetches the page and
+the stylesheet over the public URL, compares each with the file on the
+host, and checks that `/.git/HEAD` returns 404.
+
+- **The webroot takes an allowlist.** Anything outside it is deleted,
+  which keeps `.git` and the Markdown files off the web. An earlier
+  manual `cp` of the whole checkout served `/.git/` publicly. If the page
+  gains a top-level file, such as `robots.txt`, add an `--include` for it
+  in `deploy.yml` or the deploy will delete it.
+- **Do not copy the checkout by hand.** Use the playbook, for the same
+  reason.
+- **The playbook does not reload nginx.** nginx reads static files from
+  disk on each request, so new content is live once copied. Only a config
+  change needs a reload, and this repository owns no nginx config.
+- **The nginx server block is a hand edit.** The `p2poolv2.org` block
+  lives in `/etc/nginx/sites-available/testnet4.conf` on the host, with
+  `root /var/www/p2poolv2.org`. The node repo's Ansible role
+  (`../p2pool-v2/ansible/roles/nginx_p2poolv2`) still templates
+  `p2poolv2.org` as a redirect to testnet4. Running that role again would
+  take the landing page off the apex until its template is changed to
+  match.
 
 The social card at `assets/og.png` is generated, 1200x630, and shows the
 headline. If the headline changes, regenerate it: build a 1200x630 page

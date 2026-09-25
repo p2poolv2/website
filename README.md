@@ -27,11 +27,36 @@ Open `index.html` in a browser, or serve the directory:
 python3 -m http.server -d . 8000
 ```
 
-## Publishing
+## Deploying
 
-Copy the directory to any static host. For GitHub Pages, push it to the
-branch or `docs/` folder the repository serves from; nothing needs to be
-compiled first.
+The site is served from `p2poolv2.org` by nginx, out of
+`/var/www/p2poolv2.org`. The host keeps a checkout of this repository in
+`~/website`. An Ansible playbook in `ansible/` pulls `main` there and
+copies the published files into the webroot:
+
+```
+cd ansible
+ansible-playbook deploy.yml --check   # dry run: what would change
+ansible-playbook deploy.yml           # deploy
+```
+
+You need SSH access as `ubuntu@p2poolv2.org`. The host pulls from GitHub
+with its own key, so push to `main` first; the playbook deploys what is
+on GitHub, not your working tree.
+
+Only `index.html`, `styles.css` and `assets/` are published. Anything
+else in the webroot is deleted, so `.git` and the Markdown files are
+never served.
+
+The last tasks check the deploy. They fetch `https://p2poolv2.org/` and
+`styles.css` over the public URL and compare each with its file on the
+server, then confirm that `/.git/HEAD` returns 404. A failed check fails
+the run.
+
+The playbook does not reload nginx. nginx reads static files from disk
+on each request, so new content is live once it is copied. The
+`p2poolv2.org` server block belongs to the node's nginx setup, not to
+this repository.
 
 ## Conventions
 

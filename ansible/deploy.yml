@@ -1,0 +1,106 @@
+---
+# Deploy the P2Poolv2 website to p2poolv2.org.
+#
+# Usage, from this directory:
+#   ansible-playbook deploy.yml
+#   ansible-playbook deploy.yml --check    # dry run
+#
+# The host keeps a checkout in ~/website. The play pulls main there and
+# rsyncs index.html, styles.css and assets/ into the nginx webroot.
+# Everything else in the webroot, including a stray .git, is deleted.
+#
+# nginx is not reloaded. It reads static files from disk on each request,
+# so new content is live as soon as it is copied. A reload is needed only
+# when the nginx config changes, and this play does not touch the config:
+# the p2poolv2.org server block lives in the node repo's nginx setup.
+
+- name: Deploy website
+  hosts: p2poolv2.org
+  vars:
+    website_repo: git@github.com:p2poolv2/website.git
+    website_branch: main
+    website_checkout: /home/ubuntu/website
+    website_root: /var/www/p2poolv2.org
+    website_url: https://p2poolv2.org
+
+  tasks:
+    - name: Pull latest {{ website_branch }}
+      ansible.builtin.git:
+        repo: "{{ website_repo }}"
+        dest: "{{ website_checkout }}"
+        version: "{{ website_branch }}"
+        update: true
+      register: checkout
+
+    # The filter publishes index.html, styles.css and assets/, and
+    # nothing else. --delete-excluded removes anything outside that list
+    # from the webroot. In --check mode rsync runs with --dry-run.
+    - name: Copy published files to the webroot
+      ansible.builtin.command:
+        argv:
+          - rsync
+          - --recursive
+          - --checksum
+          - --itemize-changes
+          - --delete
+          - --delete-excluded
+          - --chmod=D755,F644
+          - --chown=ubuntu:www-data
+          - --include=/index.html
+          - --include=/styles.css
+          - --include=/assets/***
+          - --exclude=*
+          - "{{ '--dry-run' if ansible_check_mode else '--verbose' }}"
+          - "{{ website_checkout }}/"
+          - "{{ website_root }}/"
+      register: rsync
+      changed_when: rsync.stdout_lines | reject('match', '^(sending|sent|total|$)') | list | length > 0
+      check_mode: false
+
+    - name: Show what was copied
+      ansible.builtin.debug:
+        var: rsync.stdout_lines
+      when: rsync is changed
+
+    # --- Verify: fetch each file over the public URL and compare it
+    # --- byte for byte with what is on disk.
+
+    - name: Checksum deployed files
+      ansible.builtin.stat:
+        path: "{{ website_root }}/{{ item }}"
+        checksum_algorithm: sha1
+      loop: [index.html, styles.css]
+      register: deployed
+
+    - name: Fetch the live site
+      ansible.builtin.uri:
+        url: "{{ website_url }}/{{ item }}"
+        return_content: true
+      loop: ["", styles.css]
+      register: live
+      delegate_to: localhost
+      check_mode: false
+
+    - name: Live site matches the deployed files
+      ansible.builtin.assert:
+        that:
+          - item.0.stat.exists
+          - item.1.content | hash('sha1') == item.0.stat.checksum
+        fail_msg: "{{ item.1.url }} does not match {{ item.0.stat.path }}"
+        success_msg: "{{ item.1.url }} is serving the deployed file"
+        quiet: true
+      loop: "{{ deployed.results | zip(live.results) | list }}"
+      loop_control:
+        label: "{{ item.1.url }}"
+
+    - name: The git directory is not served
+      ansible.builtin.uri:
+        url: "{{ website_url }}/.git/HEAD"
+        status_code: 404
+      delegate_to: localhost
+      when: not ansible_check_mode
+
+    - name: Deployed commit
+      ansible.builtin.debug:
+        msg: "{{ website_url }} is serving {{ checkout.after[:7] }}"
+      when: not ansible_check_mode
