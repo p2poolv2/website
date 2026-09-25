@@ -28,8 +28,10 @@ both `p2poolv2`. Use the GitHub URLs above in page links, never the old
 `pool2win/p2pool-v2` paths that some wiki pages still carry.
 
 Other useful links: the project board at
-https://github.com/orgs/p2poolv2/projects/1 and the Matrix chat at
-https://matrix.to/#/#p2poolv2:matrix.org.
+https://github.com/orgs/p2poolv2/projects/1, the Matrix chat at
+https://matrix.to/#/#p2poolv2:matrix.org, and the X account at
+https://x.com/p2poolv2. The GitHub and X links appear as icons in both
+the top bar and the footer.
 
 ## Read before writing copy
 
@@ -393,11 +395,13 @@ short, or that he avoid all detail, but that every word tell."
   `assets/bootstrap.bundle.min.js`. There is no build step and no npm.
   The JS is there for one thing, the navbar collapse; if something else
   needs JavaScript, ask first.
-- **The nav breakpoint is `md` (768px), and that number was measured.**
-  The full bar, four links plus the live indicator plus the button, fits
-  inline at 768px with room to spare and does not fit at 576px. If a link
-  is added or renamed, re-check 768px before assuming it still fits.
-- Below 768px the links, the live indicator and the CTA all move into a
+- **The nav breakpoint is `lg` (992px), and that number was measured.**
+  The full bar, four links plus the live indicator, the GitHub and X
+  icons and the button, needs about 890px with the logo. It fits inline
+  at 992px and wraps at 768px, which is why the breakpoint moved up from
+  `md`. If a link is added or renamed, re-check 992px before assuming it
+  still fits.
+- Below 992px the links, the live indicator and the CTA all move into a
   `navbar-collapse` behind a toggler, so everything in the nav stays
   reachable on a phone. The toggler icon is a background SVG in
   `--bs-navbar-toggler-icon-bg`, so recolouring it means replacing that

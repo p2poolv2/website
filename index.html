@@ -25,7 +25,7 @@
 
 <a class="visually-hidden-focusable skip-link" href="#main">Skip to content</a>
 
-<header class="navbar navbar-expand-md sticky-top topbar py-2">
+<header class="navbar navbar-expand-lg sticky-top topbar py-2">
   <div class="container">
     <a class="navbar-brand d-block m-0 p-0" href="#top" aria-label="P2Poolv2 home">
       <img class="brand-logo" src="assets/logo.png" width="760" height="380" alt="P2Poolv2">
@@ -36,7 +36,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="topnav">
-      <nav class="navbar-nav ms-auto align-items-md-center gap-md-4 topnav"
+      <nav class="navbar-nav ms-auto align-items-lg-center gap-lg-4 topnav"
            aria-label="Sections">
         <a class="nav-link" href="#chain">Share chain</a>
         <a class="nav-link" href="#miners">Mining</a>
@@ -45,7 +45,13 @@
         <a class="live nav-link d-inline-flex align-items-center gap-2"
            href="https://testnet4.p2poolv2.org">
           <span class="live-dot" aria-hidden="true"></span>Testnet4 live</a>
-        <a class="btn btn-outline-primary btn-sm mt-2 mt-md-0" href="#run">Run a node</a>
+        <div class="social d-flex gap-3">
+          <a class="nav-link" href="https://github.com/p2poolv2/p2poolv2" aria-label="P2Poolv2 on GitHub">
+            <svg class="social-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+          <a class="nav-link" href="https://x.com/p2poolv2" aria-label="P2Poolv2 on X">
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        </div>
+        <a class="btn btn-outline-primary btn-sm mt-2 mt-lg-0" href="#run">Run a node</a>
       </nav>
     </div>
   </div>
@@ -492,13 +498,17 @@ password p2p=&lt;your p2pool address&gt;</code></pre>
   <div class="container d-flex flex-wrap justify-content-between gap-4">
     <p class="text-secondary small mb-0">P2Poolv2. Rebooted for bitcoin.
     MIT or Apache-2.0.</p>
-    <nav class="foot-nav d-flex flex-wrap gap-4" aria-label="Project links">
+    <nav class="foot-nav d-flex flex-wrap align-items-center gap-4" aria-label="Project links">
       <a href="https://testnet4.p2poolv2.org">Testnet4 pool</a>
       <a href="https://grafana.p2poolv2.org">Metrics</a>
       <a href="https://github.com/p2poolv2/p2poolv2">Source</a>
       <a href="https://github.com/p2poolv2/p2poolv2/wiki">Wiki</a>
       <a href="https://github.com/orgs/p2poolv2/projects/1">Project board</a>
       <a href="https://matrix.to/#/#p2poolv2:matrix.org">Matrix chat</a>
+      <a class="social" href="https://github.com/p2poolv2/p2poolv2" aria-label="P2Poolv2 on GitHub">
+        <svg class="social-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+      <a class="social" href="https://x.com/p2poolv2" aria-label="P2Poolv2 on X">
+        <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
     </nav>
   </div>
 </footer>

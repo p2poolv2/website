@@ -266,7 +266,7 @@ p {
 
 /* The open menu on phones: give it room off the bar and rule it off from
    the page behind, which is translucent. */
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .navbar-collapse {
     padding: 0.5rem 0 0.75rem;
     margin-top: 0.5rem;
@@ -566,6 +566,15 @@ p {
 
 .foot-nav a:hover {
   color: var(--p2-orange);
+}
+
+/* GitHub and X marks, in the top bar and the footer. The glyphs are inline
+   SVG and take their colour from the link, so they follow its hover. */
+.social-icon {
+  display: block;
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: currentColor;
 }
 
 /* ---------------------------------------------------------------
