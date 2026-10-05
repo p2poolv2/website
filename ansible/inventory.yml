@@ -1,5 +1,0 @@
----
-all:
-  hosts:
-    p2poolv2.org:
-      ansible_user: ubuntu

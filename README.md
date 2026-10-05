@@ -29,34 +29,21 @@ python3 -m http.server -d . 8000
 
 ## Deploying
 
-The site is served from `p2poolv2.org` by nginx, out of
-`/var/www/p2poolv2.org`. The host keeps a checkout of this repository in
-`~/website`. An Ansible playbook in `ansible/` pulls `main` there and
-copies the published files into the webroot:
+GitHub Pages serves the site at `https://p2poolv2.org/`.
+`.github/workflows/pages.yml` publishes it on every push to `main`, and
+can be run by hand from the Actions tab. Push to deploy.
 
-```
-cd ansible
-ansible-playbook deploy.yml --check   # dry run: what would change
-ansible-playbook deploy.yml           # deploy
-```
+The workflow publishes `index.html`, `styles.css` and `assets/`, and
+nothing else, so the Markdown files are never served. It fails the
+deploy if the page gains a `<link>`, `<script>` or `@import` that loads
+from another host.
 
-You need SSH access as `ubuntu@p2poolv2.org`. The host pulls from GitHub
-with its own key, so push to `main` first; the playbook deploys what is
-on GitHub, not your working tree.
-
-Only `index.html`, `styles.css` and `assets/` are published. Anything
-else in the webroot is deleted, so `.git` and the Markdown files are
-never served.
-
-The last tasks check the deploy. They fetch `https://p2poolv2.org/` and
-`styles.css` over the public URL and compare each with its file on the
-server, then confirm that `/.git/HEAD` returns 404. A failed check fails
-the run.
-
-The playbook does not reload nginx. nginx reads static files from disk
-on each request, so new content is live once it is copied. The
-`p2poolv2.org` server block belongs to the node's nginx setup, not to
-this repository.
+The custom domain is set in the repository's Settings, Pages, with
+Source set to "GitHub Actions". A workflow deploy ignores a `CNAME`
+file, so that setting is the only place the domain lives. DNS points
+the apex at GitHub with `A` records `185.199.108.153`,
+`185.199.109.153`, `185.199.110.153` and `185.199.111.153`, and `AAAA`
+records `2606:50c0:8000::153` and `2606:50c0:8003::153`.
 
 ## Conventions
 

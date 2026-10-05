@@ -1,0 +1,66 @@
+# Publish the website to GitHub Pages at https://p2poolv2.org.
+#
+# Runs on every push to main, and by hand from the Actions tab. The job
+# stages index.html, styles.css and assets/ into _site and publishes
+# that directory, and nothing else, so the Markdown files are never
+# served.
+#
+# The custom domain is set in the repository's Pages settings, not by a
+# CNAME file; a workflow deploy ignores CNAME. See README.md.
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time. A newer push queues behind a running deploy
+# rather than cancelling it halfway.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Stage published files
+        run: |
+          mkdir _site
+          cp index.html styles.css _site/
+          cp -r assets _site/
+
+      # The page loads nothing from a third party. Fail the deploy if a
+      # change has added an absolute URL to a link, script or import,
+      # other than one on p2poolv2.org itself, such as the canonical link.
+      - name: Check for third-party loads
+        run: |
+          if grep -nE '<(link|script)[^>]*(href|src)="(https?:)?//|@import[^;]*(https?:)?//' _site/index.html _site/styles.css \
+              | grep -vE '="https://p2poolv2\.org/'; then
+            echo "::error::index.html or styles.css loads from a third party"
+            exit 1
+          fi
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
