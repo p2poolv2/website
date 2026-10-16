@@ -320,17 +320,19 @@
   <div class="container">
     <h2 class="section-title mb-4">How a share becomes bitcoin</h2>
     <p class="intro">
-      Payout scalability was a big problem face by the original
-      P2Pool. Bitmain&rsquo;s firmware caps how many outputs a
-      coinbase transaction can carry, which capped how many miners the
-      original P2Pool could pay, and thus capped the variance it could
-      absorb.
+      Payout scalability was a big problem faced by the original
+      P2Pool. Bitmain&rsquo;s firmware started capping how many
+      outputs a coinbase transaction can carry, which capped how many
+      miners the original P2Pool could pay, and thus capped the
+      variance it could absorb.
     </p>
     <p class="intro">
       P2Poolv2 pays the top N miners from the coinbase and gives every
       other miner a share-chain output instead. Market makers buy
-      those outputs for bitcoin and receives the reward for the share
-      the original miner was due.
+      those outputs from miners for bitcoin. The miner receives
+      instant BTC payout and the market maker receives the reward for
+      the share the original miner was due until the PPLNS window pays
+      the share.
     </p>
     <p class="intro">
       The trade is facilitated using an HTLC. An output on the share
