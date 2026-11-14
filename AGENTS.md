@@ -19,7 +19,7 @@ Local checkouts, all siblings of this directory under
 | Other logos | `../logos` | -- |
 | Wiki | `../p2pool-v2.wiki` | https://github.com/p2poolv2/p2poolv2/wiki |
 | This site, once deployed | -- | https://p2poolv2.org |
-| Live testnet4 pool and chain explorer | -- | https://testnet4.p2poolv2.org |
+| Live testnet5 pool and chain explorer | -- | https://testnet5.p2poolv2.org |
 | Public pool metrics, Grafana | -- | https://grafana.p2poolv2.org |
 | Node source | `../p2pool-v2` | https://github.com/p2poolv2/p2poolv2 |
 
