@@ -60,5 +60,5 @@ records `2606:50c0:8000::153` and `2606:50c0:8003::153`.
   only animated thing on the page. It stays still under
   `prefers-reduced-motion`.
 - Claims about the chain come from the wiki and `docs/`. Keep them in step
-  when the protocol changes, in particular the version, the testnet4 status,
+  when the protocol changes, in particular the version, the testnet5 status,
   and the numbers in the "If you mine" section.

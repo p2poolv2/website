@@ -56,7 +56,7 @@ In the source repo (`../p2pool-v2`):
 - `docs/architecture/` -- share pipeline, async flow, store schema, pruning, metrics
 - `docs/atomic-swap/` -- the Lightning swap walkthrough and the HTLC scripts
 - `Cargo.toml` -- the version number quoted in the hero caption
-- `config-testnet4.toml` and friends -- stratum port and address prefixes
+- `config-testnet5.toml` and friends -- stratum port and address prefixes
 
 ## Things on the page that must stay true
 
@@ -110,7 +110,7 @@ In the source repo (`../p2pool-v2`):
   the page drift back to Lightning-only; `docs/atomic-swap/` in the node
   repo only documents the Lightning flow, which is why it reads that way.
 - The market is designed, not shipped. The chain, the accounting and the
-  coinbase payouts run on testnet4; the HTLC scripts and the Lightning
+  coinbase payouts run on testnet5; the HTLC scripts and the Lightning
   swap are under "Being built". The hero caption says so and should keep
   saying so.
 - Compact blocks are **not** mentioned, deliberately. The wiki describes
@@ -127,14 +127,14 @@ In the source repo (`../p2pool-v2`):
   chain, even though custody of the payout is unaffected. That reasoning
   is on the page in the first bullet of "If you mine", and it should stay
   there.
-- The running testnet4 pool is shown as **proof, not as the destination**.
+- The running testnet5 pool is shown as **proof, not as the destination**.
   The top bar carries a live dot linking to it, the hero offers "See the
   live chain" as the secondary action, and the status section links it
   along with the Grafana metrics. It is somewhere to look before you run
   your own, and for a first try; it is not what the page asks you to do.
 - If a host goes away, fix or remove the claim with it rather than
   leaving a dead link under a sentence asserting the thing is running.
-- That P2Poolv2 runs on testnet4 and signet, and is not ready for mainnet
+- That P2Poolv2 runs on testnet5 and signet, and is not ready for mainnet
   hashrate. The "Where the code is today" section says so plainly. Do not
   soften it without being asked.
 - The numbers in "If you mine": 99.9999996% with uncles, 99.2% without,

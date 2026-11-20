@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>P2Poolv2 &mdash; permissionless mining, auditable accounting, self-custodial payouts</title>
-<meta name="description" content="P2Poolv2 is a permissionless peer-to-peer bitcoin mining pool. It checks your work, not your identity. Every node audits the share accounting, and payouts are self-custodial, arriving on a key you hold. Running on testnet4.">
+<meta name="description" content="P2Poolv2 is a permissionless peer-to-peer bitcoin mining pool. It checks your work, not your identity. Every node audits the share accounting, and payouts are self-custodial, arriving on a key you hold. Running on testnet5.">
 <link rel="canonical" href="https://p2poolv2.org/">
 <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
 <meta property="og:title" content="P2Poolv2 - permissionless mining, auditable accounting, self-custodial payouts">
-<meta property="og:description" content="Permissionless mining: the pool checks your work, not your identity. Auditable accounting: every node replays every share. Self-custodial payouts: they arrive on a key you hold. Running on testnet4.">
+<meta property="og:description" content="Permissionless mining: the pool checks your work, not your identity. Auditable accounting: every node replays every share. Self-custodial payouts: they arrive on a key you hold. Running on testnet5.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://p2poolv2.org/">
 <meta property="og:image" content="https://p2poolv2.org/assets/og.png">
@@ -142,6 +142,36 @@
         </p>
       </figcaption>
     </figure>
+  </div>
+</section>
+
+<section class="py-5 border-top border-primary-subtle" id="testnet5">
+  <div class="container">
+    <h2 class="section-title mb-3">Testnet5 is running</h2>
+    <p class="intro mb-4">
+      Join it with a node of your own, follow the share chain as it
+      grows, or watch the pool&rsquo;s hashrate and effort on Grafana.
+    </p>
+    <div class="d-flex flex-wrap gap-3">
+      <a class="btn btn-primary" href="#run">Run a Node</a>
+      <a class="btn btn-outline-light" href="https://testnet5.p2poolv2.org/dashboard">Testnet5 Sharechain</a>
+      <a class="btn btn-outline-light" href="https://grafana.p2poolv2.org">Testnet5 Grafana Dashboard</a>
+    </div>
+    <p class="mt-4 mb-3">
+      Or point your hashrate at a running node. Set your miner to:
+    </p>
+    <div class="term mb-3" aria-label="Miner configuration for the public testnet5 node">
+<pre class="mb-0"><code>url      stratum+tcp://testnet5.p2poolv2.org:3333
+user     &lt;your tb1 bitcoin address&gt;
+password p2p=&lt;your tp2pool1 address&gt;   <span class="c"># optional</span></code></pre>
+    </div>
+    <p class="text-secondary small mb-0">
+      The <code>user</code> address receives your coinbase payouts. The
+      <code>p2p=</code> password is optional. Set it to a
+      <code>tp2pool1</code> address you can spend from, and that address
+      owns your shares on the share chain. Leave it out, and the
+      node&rsquo;s own share address owns them.
+    </p>
   </div>
 </section>
 
@@ -433,7 +463,7 @@ password p2p=&lt;your p2pool address&gt;</code></pre>
         </div>
         <p class="text-secondary small mb-0">
           Share addresses are bech32m: <code>p2pool1</code> on mainnet,
-          <code>tp2pool1</code> on testnet4, and <code>sp2pool1</code> on signet.
+          <code>tp2pool1</code> on testnet4 and testnet5, and <code>sp2pool1</code> on signet.
         </p>
       </div>
       <div class="col-lg-5">
@@ -443,7 +473,7 @@ password p2p=&lt;your p2pool address&gt;</code></pre>
           <li>RocksDB installed system-wide keeps build times down.</li>
           <li><a href="https://github.com/p2poolv2/p2poolv2/wiki/Developer-Setup-Notes">Developer setup notes</a></li>
           <li><a href="https://github.com/p2poolv2/p2poolv2/wiki/Multiple-Development-Nodes">Running several nodes locally</a></li>
-          <li><a href="https://grafana.p2poolv2.org/">Grafana dashboard example from Testnet4</a></li>
+          <li><a href="https://grafana.p2poolv2.org/">Grafana dashboard example from Testnet5</a></li>
         </ul>
       </div>
     </div>
@@ -484,8 +514,8 @@ password p2p=&lt;your p2pool address&gt;</code></pre>
   <div class="container">
     <h2 class="section-title mb-4">Where the code is today</h2>
     <p class="intro">
-      P2Poolv2 runs on testnet4. We want to make sure we ready for
-      mainnet with thorough testing on testnet4 first.
+      P2Poolv2 runs on testnet5. We want to make sure we are ready for
+      mainnet with thorough testing on testnet5 first.
     </p>
     <div class="row g-4 g-lg-5">
       <div class="col-lg-7">
@@ -503,7 +533,7 @@ password p2p=&lt;your p2pool address&gt;</code></pre>
         <ul class="plain plain-tight list-unstyled mb-0">
           <li>Share trading: the HTLC scripts, and the swap flow over Lightning and Ark</li>
           <li>A terminal app to drive bitcoind, the node, and a Lightning node together</li>
-          <li>The testnet4 fork that resets difficulty so a few Bitaxes can keep the chain moving</li>
+          <li>Testnet5, a testnet4 fork that resets difficulty so a few Bitaxes can keep the chain moving</li>
           <li>Wallet support for share-chain outputs</li>
         </ul>
       </div>

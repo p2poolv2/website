@@ -671,7 +671,7 @@ p {
   max-width: 62ch;
 }
 
-/* The running testnet4 pool, flagged in the top bar. The dot is a status
+/* The running testnet5 pool, flagged in the top bar. The dot is a status
    light, not decoration: if the pool goes away, this goes with it. */
 .live {
   font-family: var(--bs-font-monospace);
