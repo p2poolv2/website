@@ -43,16 +43,14 @@
         <a class="nav-link" href="#payments">Selling shares</a>
         <a class="nav-link" href="#status">Status</a>
         <a class="nav-link" href="https://docs.p2poolv2.org">Docs</a>
-        <a class="live nav-link d-inline-flex align-items-center gap-2"
-           href="https://testnet5.p2poolv2.org">
-          <span class="live-dot" aria-hidden="true"></span>Testnet5 live</a>
         <div class="social d-flex gap-3">
           <a class="nav-link" href="https://github.com/p2poolv2/p2poolv2" aria-label="P2Poolv2 on GitHub">
             <svg class="social-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
           <a class="nav-link" href="https://x.com/p2poolv2" aria-label="P2Poolv2 on X">
             <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
         </div>
-        <a class="btn btn-outline-primary btn-sm mt-2 mt-lg-0" href="#run">Run a node</a>
+        <a class="btn btn-outline-primary btn-sm live-btn d-inline-flex align-items-center gap-2 mt-2 mt-lg-0"
+           href="#testnet5"><span class="live-dot" aria-hidden="true"></span>Join testnet5</a>
       </nav>
     </div>
   </div>
@@ -84,8 +82,8 @@
       </div>
     </div>
     <div class="d-flex flex-wrap gap-3 mt-4">
-      <a class="btn btn-primary" href="#run">Run a node</a>
-      <a class="btn btn-outline-light" href="https://testnet5.p2poolv2.org">See the live chain</a>
+      <a class="btn btn-primary" href="#testnet5">Join testnet5</a>
+      <a class="btn btn-outline-light" href="https://testnet5.p2poolv2.org/dashboard">See the live chain</a>
     </div>
 
     <figure class="chainfig mt-5 mb-0">
@@ -149,29 +147,46 @@
   <div class="container">
     <h2 class="section-title mb-3">Testnet5 is running</h2>
     <p class="intro mb-4">
-      Join it with a node of your own, follow the share chain as it
-      grows, or watch the pool&rsquo;s hashrate and effort on Grafana.
+      A live share chain runs on testnet5 today. Follow it on the
+      sharechain dashboard, or watch the pool&rsquo;s hashrate and effort
+      on Grafana. Then join it one of two ways.
     </p>
     <div class="d-flex flex-wrap gap-3">
-      <a class="btn btn-primary" href="#run">Run a Node</a>
-      <a class="btn btn-outline-light" href="https://testnet5.p2poolv2.org/dashboard">Testnet5 Sharechain</a>
-      <a class="btn btn-outline-light" href="https://grafana.p2poolv2.org">Testnet5 Grafana Dashboard</a>
+      <a class="btn btn-outline-light" href="https://testnet5.p2poolv2.org/dashboard">Sharechain dashboard</a>
+      <a class="btn btn-outline-light" href="https://grafana.p2poolv2.org">Grafana metrics</a>
     </div>
-    <p class="mt-4 mb-3">
-      Or point your hashrate at a running node. Set your miner to:
-    </p>
-    <div class="term mb-3" aria-label="Miner configuration for the public testnet5 node">
+    <div class="props row row-cols-1 row-cols-md-2 g-0 border mt-4 mb-0">
+      <div class="col prop">
+        <p class="sub mb-2">Run your own node</p>
+        <p class="prop-body mb-3">
+          Your own node decides whether your work reaches the chain. Run
+          it privately for your own rigs, or make it public so other
+          miners can point hashrate at it. Every node you add makes the
+          pool harder to pressure.
+        </p>
+        <a class="btn btn-primary" href="#run">Run a node</a>
+      </div>
+      <div class="col prop">
+        <p class="sub mb-2">Mine on our node</p>
+        <p class="prop-body mb-3">
+          The quickest way to try it. Point a miner at the public
+          testnet5 node:
+        </p>
+        <div class="term mb-3" aria-label="Miner configuration for the public testnet5 node">
 <pre class="mb-0"><code>url      stratum+tcp://testnet5.p2poolv2.org:3333
 user     &lt;your tb1 bitcoin address&gt;
 password p2p=&lt;your tp2pool1 address&gt;   <span class="c"># optional</span></code></pre>
+        </div>
+        <p class="text-secondary small mb-0">
+          The <code>user</code> address receives your coinbase payouts. Set
+          the optional <code>p2p=</code> password to a <code>tp2pool1</code>
+          address you can spend from, and that address owns your shares.
+          Leave it out, and the node&rsquo;s own share address owns them.
+          Our node then holds the say over whether your work reaches the
+          chain; your payout still lands on your key.
+        </p>
+      </div>
     </div>
-    <p class="text-secondary small mb-0">
-      The <code>user</code> address receives your coinbase payouts. The
-      <code>p2p=</code> password is optional. Set it to a
-      <code>tp2pool1</code> address you can spend from, and that address
-      owns your shares on the share chain. Leave it out, and the
-      node&rsquo;s own share address owns them.
-    </p>
   </div>
 </section>
 

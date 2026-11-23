@@ -119,19 +119,25 @@ In the source repo (`../p2pool-v2`):
   answer in "What we changed since the first P2Pool". It came out
   because it may not be implemented. Do not restore it from the wiki
   without asking, however good the numbers look.
-- **The ask is always "run a node", never "hash on ours".** The primary
-  CTA in the hero and the top bar both point at `#run`. The pool is only
-  as decentralised as the number of nodes in it, so a page that recruits
-  hashrate onto one public node argues against the project it is selling:
-  the node operator gets the say over whether a miner's work reaches the
-  chain, even though custody of the payout is unaffected. That reasoning
-  is on the page in the first bullet of "If you mine", and it should stay
-  there.
-- The running testnet5 pool is shown as **proof, not as the destination**.
-  The top bar carries a live dot linking to it, the hero offers "See the
-  live chain" as the secondary action, and the status section links it
-  along with the Grafana metrics. It is somewhere to look before you run
-  your own, and for a first try; it is not what the page asks you to do.
+- **The ask is "join testnet5", with two ways in, and running your own
+  node comes first.** The top bar carries one button, "Join testnet5",
+  with the live dot inside it, and the hero's primary action matches.
+  Both point at `#testnet5`. That section opens with the sharechain
+  dashboard and Grafana links, then offers two boxes in the `.prop`
+  frame: "Run your own node" first, linking to `#run`, and "Mine on our
+  node" second, with the stratum settings for the public node. An
+  earlier version split the bar between a "Testnet5 live" link and a
+  "Run a node" button, which read as two competing destinations.
+- **Mining on our node is the way to try it, not the goal.** The pool is
+  only as decentralised as the number of nodes in it. A miner on our
+  node hands us the say over whether their work reaches the chain, even
+  though the payout still lands on their own key. The "Mine on our node"
+  box says so in its last sentence, and the first bullet of "If you
+  mine" makes the full argument. Keep both. Do not reorder the boxes or
+  turn the public node into the primary ask.
+- The hero's secondary action, "See the live chain", goes to the
+  sharechain dashboard, and the status section links the explorer and
+  the Grafana metrics. They show the pool running before anyone joins.
 - If a host goes away, fix or remove the claim with it rather than
   leaving a dead link under a sentence asserting the thing is running.
 - That P2Poolv2 runs on testnet5 and signet, and is not ready for mainnet
@@ -406,12 +412,12 @@ short, or that he avoid all detail, but that every word tell."
   The JS is there for one thing, the navbar collapse; if something else
   needs JavaScript, ask first.
 - **The nav breakpoint is `lg` (992px), and that number was measured.**
-  The full bar, four links plus the live indicator, the GitHub and X
-  icons and the button, needs about 890px with the logo. It fits inline
+  The full bar, five links, the GitHub and X icons and the "Join
+  testnet5" button with its live dot, needs about 890px with the logo. It fits inline
   at 992px and wraps at 768px, which is why the breakpoint moved up from
   `md`. If a link is added or renamed, re-check 992px before assuming it
   still fits.
-- Below 992px the links, the live indicator and the CTA all move into a
+- Below 992px the links, the icons and the button all move into a
   `navbar-collapse` behind a toggler, so everything in the nav stays
   reachable on a phone. The toggler icon is a background SVG in
   `--bs-navbar-toggler-icon-bg`, so recolouring it means replacing that
